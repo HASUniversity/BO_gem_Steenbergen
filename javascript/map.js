@@ -17,4 +17,9 @@ function initMap() {
             doubleClickZoom: false
         })
     });
+
+    //functie voor de meestgevange vis
+    map.on('dblclick', function (evt) {
+        console.log(map);
+    });
 }

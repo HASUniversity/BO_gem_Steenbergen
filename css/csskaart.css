@@ -3,7 +3,29 @@
     width: 100%;
 }
 
+aside {
+    height: 100vh;
+    width: 400px;
+    float: left;
+}
+
+.plaatsingaside {
+    padding: 10px;
+}
+
 section {
     height: 100vh;
-    width: 100%;
+    width: calc(100% - 400px);
+    float: right;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.transparantie {
+    margin-left: 20px;
+    width: 90%;
 }
