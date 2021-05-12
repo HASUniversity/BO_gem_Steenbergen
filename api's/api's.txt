@@ -1,0 +1,9 @@
+AgroDataCube: https://documenter.getpostman.com/view/3284162/TVeqd7aa
+
+Access to AgroDataCube V2
+You have been granted access to the AgroDataCube V2 using the token included in this mail.
+This token must be supplied as a http header parameter (token=<suppliedtoken>) in the HTTP(S) Get/Post requests.
+This token is a V2 token and cannot be used for V1 requests !!!!!!!!!!!!!!!!
+
+Token:
+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3N1ZWR0byI6Im1lbm5vdmFuZGVyc3BhbmtAZ21haWwuY29tIiwicmVzb3VyY2UiOlsiKiJdLCJpYXQiOjE2MjA4MjkwNjh9.CqAr04BXeDsB5HQpZWYZ9MyIugzLKTs8m-Nfuo-LFSA
