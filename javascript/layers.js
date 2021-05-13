@@ -20,5 +20,14 @@ function initLayers() {
     });
     map.addLayer(OSMlayer);
 
+    // Vector laag voor features
+    waarneming = new ol.source.Vector();
+    var waarneminglaag = new ol.layer.Vector({
+        source: waarneming,
+        title: 'Select WFS',
+        type: 'overlay'
+    });
+    map.addLayer(waarneminglaag);
+    
     // NDVI AgroDataCube
 }

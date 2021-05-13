@@ -7,3 +7,9 @@ This token is a V2 token and cannot be used for V1 requests !!!!!!!!!!!!!!!!
 
 Token:
 eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3N1ZWR0byI6Im1lbm5vdmFuZGVyc3BhbmtAZ21haWwuY29tIiwicmVzb3VyY2UiOlsiKiJdLCJpYXQiOjE2MjA4MjkwNjh9.CqAr04BXeDsB5HQpZWYZ9MyIugzLKTs8m-Nfuo-LFSA
+
+
+
+
+Waarneming.nl
+https://waarneming.nl/api/v1/locations/geojson/?format=json&point=POINT%284.3552208+51.618763%29
