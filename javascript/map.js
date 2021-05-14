@@ -20,14 +20,6 @@ function initMap() {
     //Dubbelklikfunctie
     map.on('dblclick', function (evt) {
 
-        $("#gebiedskeuzeintro").hide();
-        $("#datalagen").show();
-        document.getElementById("gebiedskeuze").innerHTML = "";
-        
-        if (waarneming) {
-            waarneming.clear();
-        }
-
         //Oproepen gebiedsindeling waarneming.nl
         let coordinate4326 = ol.proj.toLonLat(evt.coordinate); // coordinaten omzetten naar EPSG:4326
 
@@ -54,13 +46,22 @@ function initMap() {
 
         //ajax call voor gebiedsindeling van waarneming.nl
         $.ajax({
-            url: 'php/geoproxycurl.php',
+            url: 'php/getgeobounds.php',
             type: 'GET',
             dataType: 'json',
             // crossDomain : true,
             // accept: 'application/json',
             context: document.text,
             success: function (data) {
+
+                $("#gebiedskeuzeintro").hide();
+                $("#datalagen").show();
+                document.getElementById("gebiedskeuze").innerHTML = "";
+
+                if (waarneming) {
+                    waarneming.clear();
+                }
+
                 console.log(data);
 
                 waarneming.addFeatures(new ol.format.GeoJSON().readFeatures(data, {
@@ -74,8 +75,10 @@ function initMap() {
 
             }
         }).fail(function () {
-            console.log("Ik kan het niet vinden");
+            alert("Er is iets fout gegaan.");
         });
+
+        //oproepen perceelsgrenzen binnen grenzen gebiedsindeling waarneming.nl
 
     });
 }
