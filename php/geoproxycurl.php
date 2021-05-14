@@ -1,24 +1,15 @@
 <?php
-// LET OP!!!!!
-// Voor het gebruik van de CURL functies moet de CURL extensie aangezet worden in PHP.INI
-$url = $_POST["url"];
-$ch = curl_init(); 
-// set url 
-curl_setopt($ch, CURLOPT_URL, $url); 
-//return the transfer as a string 
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
-// for accessing https
-curl_setopt($ch, CURLOPT_CAINFO, 'cacert.pem');
-// set username password
-if (isset($_POST['username']) && isset($_POST['password']))
-{
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    curl_setopt($ch, CURLOPT_USERPWD, "$username:$password");
-}
-// $output contains the output string 
-$output = curl_exec($ch); 
-// close curl resource to free up system resources 
-curl_close($ch);      
-echo $output;
+
+$url1 = ("https://waarneming.nl/api/v1/locations/geojson/?format=json&point=POINT%28");
+
+$url2 = $_COOKIE["xcoord"];
+
+$url3 = ("+");
+
+$url4 = $_COOKIE["ycoord"];
+
+$url5 = ("%29");
+
+echo file_get_contents($url1 . $url2 . $url3 . $url4 . $url5);
+
 ?>

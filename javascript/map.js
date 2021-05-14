@@ -26,18 +26,35 @@ function initMap() {
         let Xcoord = coordinate4326[0];
         let Ycoord = coordinate4326[1];
 
-        let url = 'https://waarneming.nl/api/v1/locations/geojson/?format=json&point=POINT%28' + Xcoord + '+' + Ycoord + '%29'
+        $(document).ready(function () {
+            createCookie("xcoord", Xcoord, "10");
+            createCookie("ycoord", Ycoord, "10");
+        });
 
-        console.log(url);
+        function createCookie(name, value, days) {
+            var expires;
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toGMTString();
+            } else {
+                expires = "";
+            }
+            document.cookie = escape(name) + "=" + escape(value) + expires + "; path=/";
+        }
 
         $.ajax({
+            url: 'php/geoproxycurl.php',
             type: 'GET',
-            data: url,
             dataType: 'json',
+            // crossDomain : true,
+            // accept: 'application/json',
+            context: document.text,
             success: function (data) {
                 console.log(data);
-                // waarneming = new ol.format.GeoJSON().readFeatures(data);
             }
+        }).fail(function () {
+            console.log("Ik kan het niet vinden");
         });
 
     });
