@@ -24,7 +24,7 @@ function initLayers() {
     waarneming = new ol.source.Vector();
     var waarneminglaag = new ol.layer.Vector({
         source: waarneming,
-        title: 'Select WFS',
+        title: 'Gebiedsindeling',
         type: 'overlay'
     });
     map.addLayer(waarneminglaag);

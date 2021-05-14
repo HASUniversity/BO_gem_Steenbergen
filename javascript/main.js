@@ -3,4 +3,7 @@ $(document).ready(function(){
     initMap();
     initLayers();
     buildLayerSwitcher();
+
+    $("#datalagen").hide();
+
 });

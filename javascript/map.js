@@ -20,15 +20,24 @@ function initMap() {
     //Dubbelklikfunctie
     map.on('dblclick', function (evt) {
 
+        $("#gebiedskeuzeintro").hide();
+        $("#datalagen").show();
+        document.getElementById("gebiedskeuze").innerHTML = "";
+        
+        if (waarneming) {
+            waarneming.clear();
+        }
+
         //Oproepen gebiedsindeling waarneming.nl
         let coordinate4326 = ol.proj.toLonLat(evt.coordinate); // coordinaten omzetten naar EPSG:4326
 
         let Xcoord = coordinate4326[0];
         let Ycoord = coordinate4326[1];
 
+        //cookie functie om de geklikte coordinaten te onthouden, wat wordt opgestuurd in de link
         $(document).ready(function () {
-            createCookie("xcoord", Xcoord, "10");
-            createCookie("ycoord", Ycoord, "10");
+            createCookie("xcoord", Xcoord, "1");
+            createCookie("ycoord", Ycoord, "1");
         });
 
         function createCookie(name, value, days) {
@@ -43,6 +52,7 @@ function initMap() {
             document.cookie = escape(name) + "=" + escape(value) + expires + "; path=/";
         }
 
+        //ajax call voor gebiedsindeling van waarneming.nl
         $.ajax({
             url: 'php/geoproxycurl.php',
             type: 'GET',
@@ -52,6 +62,16 @@ function initMap() {
             context: document.text,
             success: function (data) {
                 console.log(data);
+
+                waarneming.addFeatures(new ol.format.GeoJSON().readFeatures(data, {
+                    dataProjection: 'EPSG:4326',
+                    featureProjection: 'EPSG:3857'
+                }));
+
+                //Voeg gebieds titel toe aan de sidebar
+                gebiedskeuze = window.top.innerHTML = '<p><strong>' + data.features[0].properties.title + '</strong></p>';
+                $('#gebiedskeuze').append(gebiedskeuze);
+
             }
         }).fail(function () {
             console.log("Ik kan het niet vinden");

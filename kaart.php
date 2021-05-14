@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <!--Koppeling naar de CSS van OpenLayers-->
     <link href="vendor\ol\ol.css" rel="stylesheet" />
@@ -15,56 +16,62 @@
 </head>
 
 <body>
-<main>
-    <aside>
-        <div class="plaatsingaside">
-            <h1>Bodem- en Biodiversiteitsmonitor</h1>
-            <h3>Achtergrondkaart</h3>
-            <ul id="basemaplayers"></ul>
-            <h3>Datalagen</h3>
-            <p>Check de kaartlagen aan of uit, verander de transparantie en versleep de kaartvolgorde.</p>
-            <ul id="sortable">
-                <li class="ui-state-default">
-                <input type="checkbox">NDVI Index</input><br>
-                <input class="transparantie" type="range" min="1" max="100" value="100">
-                </li>
-                <li class="ui-state-default">
-                <input type="checkbox">Waarnemingen</input><br>
-                <input class="transparantie"  type="range" min="1" max="100" value="100">
-                </li>
-                <li class="ui-state-default">
-                <input type="checkbox">Bloemrijke akkerranden</input><br>
-                <input class="transparantie"  type="range" min="1" max="100" value="100">
-                </li>
-                <li class="ui-state-default">
-                <input type="checkbox">Hoogtekaart</input><br>
-                <input class="transparantie"  type="range" min="1" max="100" value="100">
-                </li>
-                <li class="ui-state-default">
-                <input type="checkbox">Maaibestek</input><br>
-                <input class="transparantie"  type="range" min="1" max="100" value="100">
-                </li>
-                <li class="ui-state-default">
-                <input type="checkbox">Grondsoortenkaart</input><br>
-                <input class="transparantie"  type="range" min="1" max="100" value="100">
-                </li>
-                <li class="ui-state-default">
-                <input type="checkbox">Etc.</input><br>
-                <input class="transparantie"  type="range" min="1" max="100" value="100">
-                </li>
-            </ul>
-        </div>
-    </aside>
+    <main>
+        <aside>
+            <div class="plaatsingaside">
+                <h1>Bodem- en Biodiversiteitsmonitor</h1>
+                <h3>Gebied:</h3>
+                <div id="gebiedskeuze"></div>
+                <p id="gebiedskeuzeintro">(Dubbelklik op een plek in de kaart)</p>
+                <h3>Achtergrondkaart</h3>
+                <ul id="basemaplayers"></ul>
+                <div id="datalagen">
+                    <h3>Beschikbare datalagen</h3>
+                    <p>Check de kaartlagen aan of uit, verander de transparantie en versleep de kaartvolgorde.</p>
+                    <ul id="sortable">
+                        <li class="ui-state-default">
+                            <input type="checkbox">NDVI Index</input><br>
+                            <input class="transparantie" type="range" min="1" max="100" value="100">
+                        </li>
+                        <li class="ui-state-default">
+                            <input type="checkbox">Waarnemingen</input><br>
+                            <input class="transparantie" type="range" min="1" max="100" value="100">
+                        </li>
+                        <li class="ui-state-default">
+                            <input type="checkbox">Bloemrijke akkerranden</input><br>
+                            <input class="transparantie" type="range" min="1" max="100" value="100">
+                        </li>
+                        <li class="ui-state-default">
+                            <input type="checkbox">Hoogtekaart</input><br>
+                            <input class="transparantie" type="range" min="1" max="100" value="100">
+                        </li>
+                        <li class="ui-state-default">
+                            <input type="checkbox">Maaibestek</input><br>
+                            <input class="transparantie" type="range" min="1" max="100" value="100">
+                        </li>
+                        <li class="ui-state-default">
+                            <input type="checkbox">Grondsoortenkaart</input><br>
+                            <input class="transparantie" type="range" min="1" max="100" value="100">
+                        </li>
+                        <li class="ui-state-default">
+                            <input type="checkbox">Etc.</input><br>
+                            <input class="transparantie" type="range" min="1" max="100" value="100">
+                        </li>
+                    </ul>
 
-    <section>
-        <div id="map"></div>
-    </section>
+                </div>
+            </div>
+        </aside>
 
-</main>
+        <section>
+            <div id="map"></div>
+        </section>
+
+    </main>
 
     <!--Tijdelijk script voor sleepbaar listitem-->
     <script>
-    $("#sortable").sortable();
+        $("#sortable").sortable();
     </script>
 
     <!--Koppeling naar Javascript van OpenLayers-->
@@ -77,4 +84,5 @@
     <script src="javascript\layers.js"></script>
     <script src="javascript\main.js"></script>
 </body>
+
 </html>
