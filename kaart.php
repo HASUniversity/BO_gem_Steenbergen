@@ -28,7 +28,8 @@
                 <div id="datalagen">
                     <h3>Beschikbare datalagen</h3>
                     <p>Check de kaartlagen aan of uit, verander de transparantie en versleep de kaartvolgorde.</p>
-                    <ul id="sortable">
+                    <ul id="overlaylayers"></ul>
+                    <!-- <ul id="sortable">
                         <li class="ui-state-default">
                             <input type="checkbox">NDVI Index</input><br>
                             <input class="transparantie" type="range" min="1" max="100" value="100">
@@ -57,7 +58,7 @@
                             <input type="checkbox">Etc.</input><br>
                             <input class="transparantie" type="range" min="1" max="100" value="100">
                         </li>
-                    </ul>
+                    </ul> -->
 
                 </div>
             </div>
@@ -71,7 +72,7 @@
 
     <!--Tijdelijk script voor sleepbaar listitem-->
     <script>
-        $("#sortable").sortable();
+        $("#overlaylayers").sortable();
     </script>
 
     <!--Koppeling naar Javascript van OpenLayers-->

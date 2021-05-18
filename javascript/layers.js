@@ -25,7 +25,7 @@ function initLayers() {
     var waarneminglaag = new ol.layer.Vector({
         source: waarneming,
         title: 'Gebiedsindeling',
-        type: 'overlay',
+        // type: 'overlay',
         style: new ol.style.Style({
             stroke: new ol.style.Stroke({
                 width: 4,
@@ -37,7 +37,7 @@ function initLayers() {
     map.addLayer(waarneminglaag);
 
 
-    // //perceelsgrenzen wms
+    //perceelsgrenzen wms
     var perceelwms = new ol.layer.Tile({
         source: new ol.source.TileWMS(({
             url: "https://geodata.nationaalgeoregister.nl/brpgewaspercelen/wms?",
@@ -50,9 +50,9 @@ function initLayers() {
         })),
         title: "Perceelsgrenzen",
         type: 'overlay',
-        opacity: 1.0,
+        opacity: 0.5,
     });
-    // perceelwms.setVisible(false);
+    perceelwms.setVisible(false);
     map.addLayer(perceelwms);
 
     // //Perceelsgrenzen WFS
@@ -73,9 +73,9 @@ function initLayers() {
     // }).fail(function () {
     //     console.log("Het is niet gelukt");
     // });
-        // perceelwfsource.addFeatures(new ol.format.GeoJSON().readFeatures(data, {
-        //     dataProjection: 'EPSG:4326',
-        //     featureProjection: 'EPSG:3857'
-        // }));
+    // perceelwfsource.addFeatures(new ol.format.GeoJSON().readFeatures(data, {
+    //     dataProjection: 'EPSG:4326',
+    //     featureProjection: 'EPSG:3857'
+    // }));
 
 }
