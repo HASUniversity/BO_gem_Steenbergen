@@ -20,23 +20,6 @@ function initLayers() {
     });
     map.addLayer(OSMlayer);
 
-    // Vector laag voor features
-    waarneming = new ol.source.Vector();
-    var waarneminglaag = new ol.layer.Vector({
-        source: waarneming,
-        title: 'Gebiedsindeling',
-        // type: 'overlay',
-        style: new ol.style.Style({
-            stroke: new ol.style.Stroke({
-                width: 4,
-                color: '#3388ff'
-            })
-        })
-
-    });
-    map.addLayer(waarneminglaag);
-
-
     //perceelsgrenzen wms
     var perceelwms = new ol.layer.Tile({
         source: new ol.source.TileWMS(({
@@ -50,7 +33,7 @@ function initLayers() {
         })),
         title: "Perceelsgrenzen",
         type: 'overlay',
-        opacity: 0.5,
+        opacity: 1.0,
     });
     perceelwms.setVisible(false);
     map.addLayer(perceelwms);
@@ -77,5 +60,21 @@ function initLayers() {
     //     dataProjection: 'EPSG:4326',
     //     featureProjection: 'EPSG:3857'
     // }));
+
+    // Vector laag voor features
+    waarneming = new ol.source.Vector();
+    var waarneminglaag = new ol.layer.Vector({
+        source: waarneming,
+        title: 'Gebiedsindeling',
+        // type: 'overlay',
+        style: new ol.style.Style({
+            stroke: new ol.style.Stroke({
+                width: 4,
+                color: '#3388ff'
+            })
+        })
+
+    });
+    map.addLayer(waarneminglaag);
 
 }
