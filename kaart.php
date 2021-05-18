@@ -21,7 +21,7 @@
             <div class="plaatsingaside">
                 <h1>Bodem- en Biodiversiteitsmonitor</h1>
                 <h3>Gebied:</h3>
-                <div id="gebiedskeuze"></div>
+                <div id="gebiedskeuze" class="gebiedskeuzetekst"></div>
                 <p id="gebiedskeuzeintro">(Dubbelklik op een plek in de kaart)</p>
                 <h3>Achtergrondkaart</h3>
                 <ul id="basemaplayers"></ul>

@@ -4,6 +4,6 @@ $(document).ready(function(){
     initLayers();
     buildLayerSwitcher();
 
-    $("#datalagen").hide();
+    $("#datalagen").toggle();
 
 });

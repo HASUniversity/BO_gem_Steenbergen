@@ -55,7 +55,7 @@ function initMap() {
             success: function (data) {
 
                 $("#gebiedskeuzeintro").hide();
-                $("#datalagen").show();
+                $("#datalagen").toggle();
                 document.getElementById("gebiedskeuze").innerHTML = "";
 
                 if (waarneming) {
