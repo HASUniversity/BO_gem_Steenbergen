@@ -8,7 +8,7 @@ function initMap() {
         target: 'map',
         layers: [],
         view: new ol.View({
-            center: ol.proj.fromLonLat([4.313891500144687, 51.579039627392966]),
+            center: ol.proj.fromLonLat([4.338128071925327, 51.618556904258554]),
             zoom: 14,
         }),
         interactions: ol.interaction.defaults({
@@ -25,6 +25,7 @@ function initMap() {
 
         let Xcoord = coordinate4326[0];
         let Ycoord = coordinate4326[1];
+        console.log(Xcoord, Ycoord);
 
         var url = 'https://waarneming.nl/api/v1/locations/geojson/?format=json&point=POINT%28' + Xcoord + '+' + Ycoord + '%29';
 

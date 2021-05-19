@@ -43,27 +43,20 @@ function initLayers() {
     // perceelwms.setVisible(false);
     // map.addLayer(perceelwms);
 
-    //Perceelsgrenzen WFS
-    perceelwfssource = new ol.source.Vector();
-    var perceelwfs = new ol.layer.Vector({
-        source: perceelwfssource,
-        title: 'Perceelsgrenzen',
-        type: 'overlay'
-    });
-    map.addLayer(perceelwfs);
 
-    var url = 'https://geodata.nationaalgeoregister.nl/brpgewaspercelen/wfs';
 
-    let postData = {
-        'url': url
+    let postDatabrp = {
+        'url': 'https://geodata.nationaalgeoregister.nl/brpgewaspercelen/wfs?service=wfs&version=2.0.0&request=GetFeature&typeName=brpgewaspercelen:brpgewaspercelen&outputFormat=json&srsname=EPSG:4326&bbox=4.2871,51.5953,4.3971,51.6553,EPSG:4326'
     };
+
+    console.log(postDatabrp);
 
     //ajax call voor brpgewaspercelen
     $.ajax({
         url: 'php/geoproxycurl.php',
         method: 'post',
         dataType: 'json',
-        data: postData
+        data: postDatabrp
     }).done(function (data) {
         console.log(data);
 
@@ -71,7 +64,21 @@ function initLayers() {
             dataProjection: 'EPSG:4326',
             featureProjection: 'EPSG:3857'
         }));
+    })
+    .fail(function (message) {
+        console.log(message)
     });
+
+
+    //Perceelsgrenzen WFS
+    perceelwfssource = new ol.source.Vector();
+    var perceelwfs = new ol.layer.Vector({
+        source: perceelwfssource,
+        title: 'Perceelsgrenzenwfs',
+        type: 'overlay',
+    });
+    map.addLayer(perceelwfs);
+
 
     // Vector laag voor features
     waarneming = new ol.source.Vector();

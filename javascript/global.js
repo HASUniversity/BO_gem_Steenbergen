@@ -4,3 +4,4 @@ var waarneming;
 var Xcoord;
 var Ycoord;
 var perceelwms;
+var perceelwfs;
