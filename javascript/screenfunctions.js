@@ -29,7 +29,11 @@ function buildLayerSwitcher() {
                 liTekst += ">";
             }
             //zorg ervoor dat je ook op de tekst kan klikken
-            liTekst += '<label for="' + layer.ol_uid + '">' + layer.values_.title + '</label></li>';
+            liTekst += '<label for="' + layer.ol_uid + '">' + layer.values_.title + '</label></br>';
+
+            //transparantieslider
+            liTekst += '<input type="range" min="1" max="100" value="50" id="gekozentransparantie"></li>';
+
             // voeg de li toe an de ul
             $('#overlaylayers').append(liTekst);
         }

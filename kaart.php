@@ -29,6 +29,7 @@
                     <h3>Beschikbare datalagen</h3>
                     <p>Check de kaartlagen aan of uit, verander de transparantie en versleep de kaartvolgorde.</p>
                     <ul id="overlaylayers"></ul>
+                    <input type="range" min="1" max="100" value="50" id="gekozentransparantietest" onchange='updateOpacityPerceelwms()'>
                     <!-- <ul id="sortable">
                         <li class="ui-state-default">
                             <input type="checkbox">NDVI Index</input><br>
@@ -84,6 +85,7 @@
     <script src="javascript\map.js"></script>
     <script src="javascript\layers.js"></script>
     <script src="javascript\main.js"></script>
+    <script src="javascript\updateopacitylayerperceelwms.js"></script>
 </body>
 
 </html>

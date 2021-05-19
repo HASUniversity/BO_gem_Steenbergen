@@ -26,43 +26,27 @@ function initMap() {
         let Xcoord = coordinate4326[0];
         let Ycoord = coordinate4326[1];
 
-        //cookie functie om de geklikte coordinaten te onthouden, wat wordt opgestuurd in de link
-        $(document).ready(function () {
-            createCookie("xcoord", Xcoord, "1");
-            createCookie("ycoord", Ycoord, "1");
-        });
+        var url = 'https://waarneming.nl/api/v1/locations/geojson/?format=json&point=POINT%28' + Xcoord + '+' + Ycoord + '%29';
 
-        function createCookie(name, value, days) {
-            var expires;
-            if (days) {
-                var date = new Date();
-                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-                expires = "; expires=" + date.toGMTString();
-            } else {
-                expires = "";
-            }
-            document.cookie = escape(name) + "=" + escape(value) + expires + "; path=/";
-        }
+        let postData = {
+            'url': url
+        };
 
         //ajax call voor gebiedsindeling van waarneming.nl
         $.ajax({
-            url: 'php/getgeobounds.php',
-            type: 'GET',
+            url: 'php/geoproxycurl.php',
+            method: 'post',
             dataType: 'json',
-            // crossDomain : true,
-            // accept: 'application/json',
-            context: document.text,
-            success: function (data) {
-
+            data: postData
+        }).done(function (data){
                 $("#gebiedskeuzeintro").hide();
-                $("#datalagen").toggle();
+                // $("#datalagen").toggle();
                 document.getElementById("gebiedskeuze").innerHTML = "";
 
+                // na nieuwe dubbelklik, oude gebiedsindeling leegmaken
                 if (waarneming) {
                     waarneming.clear();
                 }
-
-                console.log(data);
 
                 waarneming.addFeatures(new ol.format.GeoJSON().readFeatures(data, {
                     dataProjection: 'EPSG:4326',
@@ -71,11 +55,7 @@ function initMap() {
 
                 //Voeg gebieds titel toe aan de sidebar
                 gebiedskeuze = window.top.innerHTML = '<p><strong>' + data.features[0].properties.title + '</strong></p>';
-                $('#gebiedskeuze').append(gebiedskeuze);
-
-            }
-        }).fail(function () {
-            alert("Er is iets fout gegaan.");
+                $('#gebiedskeuze').append(gebiedskeuze)
         });
 
         //oproepen perceelsgrenzen binnen grenzen gebiedsindeling waarneming.nl

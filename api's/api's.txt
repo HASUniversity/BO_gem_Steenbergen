@@ -13,3 +13,14 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3N1ZWR0byI6Im1lbm5vdmFuZGVyc3BhbmtAZ21
 
 Waarneming.nl
 https://waarneming.nl/api/v1/locations/geojson/?format=json&point=POINT%284.3552208+51.618763%29
+
+
+
+
+- Waarneming.nl?
+- brpgewasperceel wfs ipv wms
+- AHN
+- professionaliseringsuren
+
+
+
