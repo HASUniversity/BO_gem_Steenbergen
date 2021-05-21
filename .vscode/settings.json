@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/2fdaa4e0-c74f-4891-9ce4-e97493be4b19/resourceGroups/DL-WE-P-LAB-RG-CHI01/providers/Microsoft.Web/sites/BOgemeentesteenbergen",
+    "appService.deploySubpath": "."
+}
