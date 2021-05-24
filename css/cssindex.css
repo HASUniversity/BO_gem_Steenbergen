@@ -26,6 +26,7 @@
     top: 25%;
     left: 2.5%;
     height: 50vh;
+    padding: 10px;
 }
 
 .right{
@@ -37,6 +38,7 @@
     position: absolute;
     top: 25%;
     height: 50vh;
+    padding: 10px;
 }
 
 .bottom{
@@ -82,6 +84,7 @@ img {vertical-align: middle;}
   max-width: 1000px;
   position: relative;
   margin: auto;
+  text-align: center;
 }
 
 /* Next & previous buttons */
@@ -98,6 +101,10 @@ img {vertical-align: middle;}
   transition: 0.6s ease;
   border-radius: 0 3px 3px 0;
   user-select: none;
+}
+
+.prev{
+  left: 0;
 }
 
 /* Position the "next button" to the right */
@@ -137,6 +144,7 @@ img {vertical-align: middle;}
   height: 15px;
   width: 15px;
   margin: 0 2px;
+  margin-top: 2px;
   background-color: #bbb;
   border-radius: 50%;
   display: inline-block;
