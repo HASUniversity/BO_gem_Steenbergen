@@ -28,21 +28,21 @@ function initLayers() {
 
     //ajax call voor brpgewaspercelen
     $.ajax({
-        url: 'php/geoproxycurl.php',
-        method: 'post',
-        dataType: 'json',
-        data: postDatabrp
-    }).done(function (data) {
-        console.log(data);
+            url: 'php/geoproxycurl.php',
+            method: 'post',
+            dataType: 'json',
+            data: postDatabrp
+        }).done(function (data) {
+            console.log(data);
 
-        perceelwfssource.addFeatures(new ol.format.GeoJSON().readFeatures(data, {
-            dataProjection: 'EPSG:4326',
-            featureProjection: 'EPSG:3857'
-        }));
-    })
-    .fail(function (message) {
-        console.log(message)
-    });
+            perceelwfssource.addFeatures(new ol.format.GeoJSON().readFeatures(data, {
+                dataProjection: 'EPSG:4326',
+                featureProjection: 'EPSG:3857'
+            }));
+        })
+        .fail(function (message) {
+            console.log(message)
+        });
 
 
     //Perceelsgrenzen WFS
@@ -59,6 +59,25 @@ function initLayers() {
         })
     });
     map.addLayer(perceelwfs);
+
+
+    // WMS
+    var newwms = new ol.layer.Tile({
+        source: new ol.source.TileWMS(({
+            url: "https://geodata.nationaalgeoregister.nl/tiles/service/wmts?request=GetCapabilities",
+            attributions: ' ',
+            params: {
+                "LAYERS": "ahn3_05m_dtm",
+                // "TILED": "true",
+                "VERSION": "1.0.0"
+            },
+        })),
+        title: "New wms",
+        type: 'overlay',
+        opacity: 1.0,
+    });
+    // perceelwms.setVisible(false);
+    map.addLayer(newwms);
 
 
     // Vector laag voor gebiedsindeling waarneming.nl

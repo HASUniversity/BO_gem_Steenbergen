@@ -1,94 +1,107 @@
 .background {
-    background-image: url(../img/background.png);
-    background-size: cover;
+  background-image: url(../img/background.png);
+  background-size: cover;
 
 }
 
 .overlay {
-    background-color: rgba(0, 0, 0, 0.5);
-    height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100vh;
 }
 
 .titel {
-    text-align: center;
-    color: white;
-    margin: 0;
-    padding-top: 25px;
-    font-size: 50px;
+  text-align: center;
+  color: white;
+  margin: 0;
+  padding-top: 25px;
+  font-size: 50px;
 }
 
-.left{
-    color: white;
-    background-color: rgba(0, 0, 0, 0.5);
-    margin: 0;
-    width: 45%;
-    position: absolute;
-    top: 25%;
-    left: 2.5%;
-    height: 50vh;
-    padding: 10px;
+.left {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  margin: 0;
+  width: 45%;
+  position: absolute;
+  top: 25%;
+  left: 2.5%;
+  height: 50vh;
+  padding: 10px;
 }
 
-.right{
-    color: white;
-    background-color: rgba(0, 0, 0, 0.5);
-    margin: 0;
-    width: 45%;
-    right: 2.5%;
-    position: absolute;
-    top: 25%;
-    height: 50vh;
-    padding: 10px;
+.right {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  margin: 0;
+  width: 45%;
+  right: 2.5%;
+  position: absolute;
+  top: 25%;
+  height: 50vh;
+  padding: 10px;
 }
 
-.bottom{
-    position: absolute;
-    bottom: 50px;
-    left: calc(50% - 101px);
+.bottom {
+  position: absolute;
+  bottom: 50px;
+  left: calc(50% - 101px);
 }
 
 .knop {
-    background-color: #009432;
-    padding-left: 30px;
-    padding-top: 15px;
-    padding-right: 30px;
-    padding-bottom: 15px;
-    border-style: solid;
-    border-color: green;
-    color: white;
-    font-weight: bold;
-    text-decoration: none;
+  background-color: #009432;
+  padding-left: 30px;
+  padding-top: 15px;
+  padding-right: 30px;
+  padding-bottom: 15px;
+  border-style: solid;
+  border-color: green;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
 }
 
 .bottom:hover {
-    transform: scale(0.95);
+  transform: scale(0.95);
 }
 
-.knop:hover{
-    background-color: #01c041;
+.knop:hover {
+  background-color: #01c041;
 }
 
-.uitleg{
-    margin: 0;
-    position: absolute;
-    width: 95%;
+.uitleg {
+  margin: 0;
+  position: absolute;
+  width: 95%;
 }
 
-* {box-sizing: border-box}
-body {font-family: Verdana, sans-serif; margin:0}
-.mySlides {display: none}
-img {vertical-align: middle;}
+* {
+  box-sizing: border-box
+}
+
+body {
+  font-family: Verdana, sans-serif;
+  margin: 0
+}
+
+.mySlides {
+  display: none;
+}
+
+img {
+  vertical-align: middle;
+}
 
 /* Slideshow container */
 .slideshow-container {
   max-width: 1000px;
   position: relative;
-  margin: auto;
+  margin: 15px;
   text-align: center;
 }
 
 /* Next & previous buttons */
-.prev, .next {
+.prev,
+.next {
   cursor: pointer;
   position: absolute;
   top: 50%;
@@ -103,7 +116,7 @@ img {vertical-align: middle;}
   user-select: none;
 }
 
-.prev{
+.prev {
   left: 0;
 }
 
@@ -114,8 +127,9 @@ img {vertical-align: middle;}
 }
 
 /* On hover, add a black background color with a little bit see-through */
-.prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 /* Caption text */
@@ -151,8 +165,13 @@ img {vertical-align: middle;}
   transition: background-color 0.6s ease;
 }
 
-.active, .dot:hover {
+.active,
+.dot:hover {
   background-color: #717171;
+}
+
+.demoimg {
+  width: 90%;
 }
 
 /* Fading animation */
@@ -164,16 +183,31 @@ img {vertical-align: middle;}
 }
 
 @-webkit-keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
+  from {
+    opacity: .4
+  }
+
+  to {
+    opacity: 1
+  }
 }
 
 @keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
+  from {
+    opacity: .4
+  }
+
+  to {
+    opacity: 1
+  }
 }
 
 /* On smaller screens, decrease text size */
 @media only screen and (max-width: 300px) {
-  .prev, .next,.text {font-size: 11px}
+
+  .prev,
+  .next,
+  .text {
+    font-size: 11px
+  }
 }
