@@ -5,3 +5,4 @@ var Xcoord;
 var Ycoord;
 var perceelwms;
 var perceelwfs;
+var newwms;
