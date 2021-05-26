@@ -5,4 +5,6 @@ var Xcoord;
 var Ycoord;
 var perceelwms;
 var perceelwfs;
-var newwms;
+var newwms
+var pilotgebiedsource;
+var pilotgebied;

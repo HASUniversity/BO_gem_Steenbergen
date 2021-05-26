@@ -8,8 +8,8 @@ function initMap() {
         target: 'map',
         layers: [],
         view: new ol.View({
-            center: ol.proj.fromLonLat([4.338128071925327, 51.618556904258554]),
-            zoom: 14,
+            center: ol.proj.fromLonLat([4.364829464530436, 51.61527942253821]),
+            zoom: 13,
         }),
         interactions: ol.interaction.defaults({
             //doubleclickzoom staat uit om te voorkomen dat mobiele gebruikers inzoomen op de website ipv de kaart

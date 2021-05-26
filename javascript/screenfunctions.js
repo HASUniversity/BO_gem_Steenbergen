@@ -21,7 +21,7 @@ function buildLayerSwitcher() {
         } else if (layer.values_.type == "overlay") {
             //als de laag een overlay is
             // opbouwen li item met een checkbox
-            let liTekst = '<li class="ui-state-default"><input type="checkbox" id="' + layer.ol_uid + '" name="' + layer.ol_uid + '" value="' + layer.ol_uid + '" class="overlayswitch"';
+            let liTekst = '<li class="ui-state-default" id="item_1"><input type="checkbox" id="' + layer.ol_uid + '" name="' + layer.ol_uid + '" value="' + layer.ol_uid + '" class="overlayswitch"';
             //zorg dat de chekbox van zichtbare aan staat
             if (layer.values_.visible) {
                 liTekst += "checked>";
@@ -53,7 +53,7 @@ function buildLayerSwitcher() {
     });
 
     // Wanneer het checkbox is
-    $('input[type=checkbox][class=overlayswitch').on('change', function () {
+    $('input[type=checkbox][class=overlayswitch]').on('change', function () {
         let ol_uid = this.value;
         map.getLayers().forEach(function (layer) {
             if (layer.ol_uid == ol_uid) {

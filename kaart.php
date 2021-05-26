@@ -28,34 +28,34 @@
                 <div id="datalagen">
                     <h3>Beschikbare datalagen</h3>
                     <p>Check de kaartlagen aan of uit, verander de transparantie en versleep de kaartvolgorde.</p>
-                    <ul id="overlaylayers"></ul>
-                    <input type="range" min="1" max="100" value="50" id="gekozentransparantietest">
-                    <!-- <ul id="sortable">
-                        <li class="ui-state-default">
-                            <input type="checkbox">NDVI Index</input><br>
+                    <ul id="overlaylayers" class="sortable-list"></ul>
+                    <!-- <input type="range" min="1" max="100" value="50" id="gekozentransparantietest"> -->
+                    <!-- <ul id="sortable" class="sortable-list">
+                        <li class="ui-state-default" id="item_1">
+                            <input type="checkbox" id="idpilotgebied" onclick="layerPilotgebied()">Pilotgebied</input><br>
                             <input class="transparantie" type="range" min="1" max="100" value="100">
                         </li>
-                        <li class="ui-state-default">
-                            <input type="checkbox">Waarnemingen</input><br>
+                        <li class="ui-state-default" id="item_2">
+                            <input type="checkbox">Perceelsgrenzen</input><br>
                             <input class="transparantie" type="range" min="1" max="100" value="100">
                         </li>
-                        <li class="ui-state-default">
+                        <li class="ui-state-default" id="item_3">
                             <input type="checkbox">Bloemrijke akkerranden</input><br>
                             <input class="transparantie" type="range" min="1" max="100" value="100">
                         </li>
-                        <li class="ui-state-default">
+                        <li class="ui-state-default" id="item_4">
                             <input type="checkbox">Hoogtekaart</input><br>
                             <input class="transparantie" type="range" min="1" max="100" value="100">
                         </li>
-                        <li class="ui-state-default">
+                        <li class="ui-state-default" id="item_5">
                             <input type="checkbox">Maaibestek</input><br>
                             <input class="transparantie" type="range" min="1" max="100" value="100">
                         </li>
-                        <li class="ui-state-default">
+                        <li class="ui-state-default" id="item_6">
                             <input type="checkbox">Grondsoortenkaart</input><br>
                             <input class="transparantie" type="range" min="1" max="100" value="100">
                         </li>
-                        <li class="ui-state-default">
+                        <li class="ui-state-default" id="item_7">
                             <input type="checkbox">Etc.</input><br>
                             <input class="transparantie" type="range" min="1" max="100" value="100">
                         </li>
@@ -73,7 +73,20 @@
 
     <!--Tijdelijk script voor sleepbaar listitem-->
     <script>
-        $("#overlaylayers").sortable();
+
+        $('.sortable-list').sortable({
+            connectWith: '.sortable-list',
+            update: function (event, ui) {
+                var changedList = this.id;
+                var order = $(this).sortable('toArray');
+                var positions = order.join(';');
+
+                console.log({
+                    positions: positions
+                });
+            }
+        });
+
     </script>
 
     <!--Koppeling naar Javascript van OpenLayers-->

@@ -57,6 +57,45 @@ function initLayers() {
     });
     map.addLayer(perceelwfs);
 
+
+    let postDatapilot = {
+        'url': 'http://localhost:8080/geoserver/BOsteenbergen/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=BOsteenbergen%3Apilotgebiedtwee&maxFeatures=50&outputFormat=application%2Fjson'
+    };
+
+    //ajax call voor pilotgebied
+    $.ajax({
+            url: 'php/geoproxycurl.php',
+            method: 'post',
+            dataType: 'json',
+            data: postDatapilot
+        }).done(function (data) {
+
+            pilotgebiedsource.addFeatures(new ol.format.GeoJSON().readFeatures(data, {
+                dataProjection: 'EPSG:4326',
+                featureProjection: 'EPSG:3857'
+            }));
+        })
+        .fail(function (message) {
+            console.log(message)
+        });
+
+
+    //Pilotgebiedsgrenzen
+    pilotgebiedsource = new ol.source.Vector();
+    var pilotgebied = new ol.layer.Vector({
+        source: pilotgebiedsource,
+        title: 'Pilotgebied',
+        type: 'overlay',
+        style: new ol.style.Style({
+            stroke: new ol.style.Stroke({
+                width: 3,
+                color: 'rgba(299,0,0,1.0)'
+            })
+        })
+    });
+    map.addLayer(pilotgebied);
+
+
     // Vector laag voor gebiedsindeling waarneming.nl
     waarneming = new ol.source.Vector();
     var waarneminglaag = new ol.layer.Vector({
@@ -79,16 +118,16 @@ function initLayers() {
 
 
 
-    var pogingwmsahn = new ol.layer.Tile({
-        title: "Poging wms ahn",
-        type: 'overlay',
-        source: new ol.source.TileWMS({
-            url: "https://geodata.nationaalgeoregister.nl/ahn2/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&LAYERS=ahn2_5m&STYLES=&CRS=EPSG:3857&WIDTH=836&HEIGHT=1486&BBOX=640396.0332203114%2C7012365.015999583%2C648383.7026761123%2C7026563.194003555"
-        })
-    });
-    console.log(pogingwmsahn);
-    map.addLayer(pogingwmsahn);
-    
+    // var pogingwmsahn = new ol.layer.Tile({
+    //     title: "Poging wms ahn",
+    //     type: 'overlay',
+    //     source: new ol.source.TileWMS({
+    //         url: "https://geodata.nationaalgeoregister.nl/ahn2/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&LAYERS=ahn2_5m&STYLES="
+    //     })
+    // });
+    // // console.log(pogingwmsahn);
+    // map.addLayer(pogingwmsahn);
+
 
 
 
@@ -149,5 +188,9 @@ function initLayers() {
 
 
 
+
+}
+
+function layerPilotgebied() {
 
 }
