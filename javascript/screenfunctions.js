@@ -2,7 +2,12 @@ function buildLayerSwitcher() {
     // ophalen van alle lagen uit de map
     var mapLayers = map.getLayers().getArray();
     // voor elke laag uit de map
+
+    //item ide voor overlay layers telkens 1 omhoog doen
+    let iditem = 1;
+
     $.each(mapLayers, function (i, layer) {
+
         // als de laag een basemap is
         if (layer.values_.type == 'basemap') {
             // opbouwen Li-item met radiobutton
@@ -21,7 +26,7 @@ function buildLayerSwitcher() {
         } else if (layer.values_.type == "overlay") {
             //als de laag een overlay is
             // opbouwen li item met een checkbox
-            let liTekst = '<li class="ui-state-default" id="item_1"><input type="checkbox" id="' + layer.ol_uid + '" name="' + layer.ol_uid + '" value="' + layer.ol_uid + '" class="overlayswitch"';
+            let liTekst = '<li class="ui-state-default" id="layer_' + iditem + '"><input type="checkbox" id="' + layer.ol_uid + '" name="' + layer.ol_uid + '" value="' + layer.ol_uid + '" class="overlayswitch"';
             //zorg dat de chekbox van zichtbare aan staat
             if (layer.values_.visible) {
                 liTekst += "checked>";
@@ -36,6 +41,10 @@ function buildLayerSwitcher() {
 
             // voeg de li toe an de ul
             $('#overlaylayers').append(liTekst);
+
+            //iditem + 1
+            iditem = iditem + 1;
+
         }
     });
 
