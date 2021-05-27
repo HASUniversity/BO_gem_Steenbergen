@@ -77,13 +77,25 @@
         $('.sortable-list').sortable({
             connectWith: '.sortable-list',
             update: function (event, ui) {
-                var changedList = this.id;
                 var order = $(this).sortable('toArray');
-                var positions = order.join(';');
 
-                console.log({
-                    positions: positions
-                });
+                // console.log(order[0]);
+                // console.log(order[1]);
+
+                let maplayers = map.getLayers().getArray();
+
+                console.log(maplayers);
+
+                $.each(order, function(i, orderlayer){
+                    console.log(orderlayer);
+                    $.each(maplayers, function(j, overlay){
+                        console.log(ol.util.getUid(overlay));
+                        if (orderlayer == ol.util.getUid(overlay)){
+                            overlay.setZIndex(1000 - i);
+                        }
+                    })
+                })
+
             }
         });
 

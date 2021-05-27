@@ -16,13 +16,22 @@ function initLayers() {
     var OSMlayer = new ol.layer.Tile({
         source: new ol.source.OSM(),
         title: 'OpenStreetMap',
-        type: 'basemap'
+        type: 'basemap',
+        attributions: ['Openstreetmap']
     });
     map.addLayer(OSMlayer);
 
+
+
+
+
+
+
     let postDatabrp = {
-        'url': 'https://geodata.nationaalgeoregister.nl/brpgewaspercelen/wfs?service=wfs&version=2.0.0&request=GetFeature&typeName=brpgewaspercelen:brpgewaspercelen&outputFormat=json&srsname=EPSG:4326&bbox=4.2871,51.5953,4.3971,51.6553,EPSG:4326'
+        'url': 'https://gmd.has.nl/geoserver/stib/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=stib:gemeenten2019&outputFormat=application%2Fjson'
     };
+
+    // https://geodata.nationaalgeoregister.nl/brpgewaspercelen/wfs?service=wfs&version=2.0.0&request=GetFeature&typeName=brpgewaspercelen:brpgewaspercelen&outputFormat=json&srsname=EPSG:4326&bbox=4.2871,51.5953,4.3971,51.6553,EPSG:4326
 
     //ajax call voor brpgewaspercelen
     $.ajax({
@@ -52,10 +61,21 @@ function initLayers() {
             stroke: new ol.style.Stroke({
                 width: 2,
                 color: 'rgba(0,0,0,0.3)'
+            }),
+            fill: new ol.style.Stroke({
+                width: 2,
+                color: 'rgba(0,299,299,0.9)'
             })
         })
     });
+    perceelwfs.setVisible(false);
     map.addLayer(perceelwfs);
+
+
+
+
+
+
 
 
     let postDatapilot = {
@@ -93,7 +113,25 @@ function initLayers() {
             })
         })
     });
+    pilotgebied.setVisible(false);
     map.addLayer(pilotgebied);
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
 
 
     // Vector laag voor gebiedsindeling waarneming.nl
@@ -101,6 +139,7 @@ function initLayers() {
     var waarneminglaag = new ol.layer.Vector({
         source: waarneming,
         title: 'Gebiedsindeling',
+        ZIndex: 2000,
         // type: 'overlay',
         style: new ol.style.Style({
             stroke: new ol.style.Stroke({
@@ -182,15 +221,5 @@ function initLayers() {
     // });
     // // perceelwms.setVisible(false);
     // map.addLayer(perceelwms);
-
-
-
-
-
-
-
-}
-
-function layerPilotgebied() {
 
 }

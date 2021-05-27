@@ -26,7 +26,7 @@ function buildLayerSwitcher() {
         } else if (layer.values_.type == "overlay") {
             //als de laag een overlay is
             // opbouwen li item met een checkbox
-            let liTekst = '<li class="ui-state-default" id="layer_' + iditem + '"><input type="checkbox" id="' + layer.ol_uid + '" name="' + layer.ol_uid + '" value="' + layer.ol_uid + '" class="overlayswitch"';
+            let liTekst = '<li class="ui-state-default" id="' + layer.ol_uid + '"><input type="checkbox" id="' + layer.ol_uid + '" name="' + layer.ol_uid + '" value="' + layer.ol_uid + '" class="overlayswitch"';
             //zorg dat de chekbox van zichtbare aan staat
             if (layer.values_.visible) {
                 liTekst += "checked>";
@@ -37,7 +37,7 @@ function buildLayerSwitcher() {
             liTekst += '<label for="' + layer.ol_uid + '">' + layer.values_.title + '</label></br>';
 
             //transparantieslider
-            liTekst += '<input type="range" min="1" max="100" value="50" id="gekozentransparantie"></li>';
+            liTekst += '<input type="range" min="1" max="100" value="50" id="gekozentransparantie" style="width:90%;"></li>';
 
             // voeg de li toe an de ul
             $('#overlaylayers').append(liTekst);
