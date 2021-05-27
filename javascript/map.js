@@ -17,6 +17,68 @@ function initMap() {
         })
     });
 
+    var geolocation = new ol.Geolocation({
+        projection: map.getView().getProjection(),
+        tracking: true,
+        trackingOptions: {
+            enableHighAccuracy: true,
+        }
+    });
+
+    // Extra openlayers control die ervoor zorgt dat je naar je huidige locatie wordt gezoomd
+    //Knop om naar je huidige locatie in te zoomen
+    var zoomToCurrentLocation = ol.extent.createEmpty();
+    geolocation.on('change:accuracyGeometry', function() {
+        geolocation.getAccuracyGeometry().getExtent(zoomToCurrentLocation);
+    });
+
+    // Voeg de functie toe aan de knop
+    var zoomimage = new Image(20, 20);
+    zoomimage.src = 'img/locate.png';
+
+    zoomToExtentControl = new ol.control.ZoomToExtent({
+        extent: zoomToCurrentLocation,
+        className: 'custom-zoom-extent',
+        label: zoomimage
+    });
+    // Voeg de knop toe aan de kaart
+    map.addControl(zoomToExtentControl);
+
+    // listen to changes in position
+    geolocation.once('change:position', function (evt) {
+
+        // gooi je eigen locatie leeg als ie een nieuwe locatie heeft gevonden
+        markeropeigenlocatie.clear();
+
+        // Cirkel om je eigen punt heen wat de accuraatheid is van het punt. Je locatie kan ergens binnen die locatie zijn.
+        var accuracyFeature = new ol.Feature();
+        geolocation.on('change:accuracyGeometry', function () {
+            accuracyFeature.setGeometry(geolocation.getAccuracyGeometry());
+        });
+
+        // De locatie waar de kaart denkt dat jij bent. Plaats ie nu een punt bovenop
+        let myLocationGeom = new ol.geom.Point(geolocation.getPosition());
+        let myLocationFeature = new ol.Feature({
+            geometry: myLocationGeom,
+        });
+
+        // Stijl voor de punt
+        myLocationFeature.setStyle(locatieStijlPunt);
+        // Stijl voor de cirkel
+        accuracyFeature.setStyle(locatieStijlVlak);
+
+        markeropeigenlocatie.addFeature(myLocationFeature);
+        markeropeigenlocatie.addFeature(accuracyFeature);
+
+        map.setView(new ol.View({
+            center: geolocation.getPosition(),
+            zoom: 14,
+            maxZoom: 16.9
+        }));
+    });
+
+
+
     //Dubbelklikfunctie
     map.on('dblclick', function (evt) {
 

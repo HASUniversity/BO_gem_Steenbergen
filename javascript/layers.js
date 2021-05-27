@@ -5,7 +5,7 @@ function initLayers() {
     var ESRIsatteliet = new ol.layer.Tile({
         source: new ol.source.XYZ({
             url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-            attributions: ['Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community']
+            attributions: ['&copy; Esri &mdash; Source: Esri']
         }),
         title: 'Satteliet',
         type: 'basemap'
@@ -28,10 +28,12 @@ function initLayers() {
 
 
     let postDatabrp = {
-        'url': 'https://gmd.has.nl/geoserver/stib/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=stib:gemeenten2019&outputFormat=application%2Fjson'
+        'url': 'https://geodata.nationaalgeoregister.nl/brpgewaspercelen/wfs?service=wfs&version=2.0.0&request=GetFeature&typeName=brpgewaspercelen:brpgewaspercelen&outputFormat=json&srsname=EPSG:4326&bbox=4.29136,51.58539,4.45238,51.65942,EPSG:4326'
     };
 
     // https://geodata.nationaalgeoregister.nl/brpgewaspercelen/wfs?service=wfs&version=2.0.0&request=GetFeature&typeName=brpgewaspercelen:brpgewaspercelen&outputFormat=json&srsname=EPSG:4326&bbox=4.2871,51.5953,4.3971,51.6553,EPSG:4326
+
+    //https://gmd.has.nl/geoserver/stib/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=stib:gemeenten2019&outputFormat=application%2Fjson
 
     //ajax call voor brpgewaspercelen
     $.ajax({
@@ -61,10 +63,6 @@ function initLayers() {
             stroke: new ol.style.Stroke({
                 width: 2,
                 color: 'rgba(0,0,0,0.3)'
-            }),
-            fill: new ol.style.Stroke({
-                width: 2,
-                color: 'rgba(0,299,299,0.9)'
             })
         })
     });
@@ -139,7 +137,7 @@ function initLayers() {
     var waarneminglaag = new ol.layer.Vector({
         source: waarneming,
         title: 'Gebiedsindeling',
-        ZIndex: 2000,
+        ZIndex: 9999,
         // type: 'overlay',
         style: new ol.style.Style({
             stroke: new ol.style.Stroke({
@@ -152,6 +150,16 @@ function initLayers() {
     map.addLayer(waarneminglaag);
 
 
+
+
+    // Huidige locatie stip
+    markeropeigenlocatie = new ol.source.Vector();
+    var eigenlocatielaag = new ol.layer.Vector({
+        source: markeropeigenlocatie,
+        title: 'Huidige locatie',
+        // type: 'overlay'
+    });
+    map.addLayer(eigenlocatielaag);
 
 
 

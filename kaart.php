@@ -8,6 +8,7 @@
     <!-- Eigen css -->
     <link href="css\css.css" rel="stylesheet" />
     <link href="css\csskaart.css" rel="stylesheet" />
+    <link href="css\controls.css" rel="stylesheet" />
 
     <!-- tijdelijke codes in php -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
@@ -17,9 +18,22 @@
 
 <body>
     <main>
+
+        <div class="header">
+            <div class="header-left">
+                <a href="#default" class="logo">BodemScope</a>
+            </div>
+            <div class="header-right">
+                <a href="#overons">Over ons</a>
+                <a href="#intro">Intro</a>
+                <a href="#kennis">Kennis</a>
+                <a href="#inloggen">Inloggen</a>
+            </div>
+        </div>    
+
+
         <aside>
             <div class="plaatsingaside">
-                <h1>Bodem- en Biodiversiteitsmonitor</h1>
                 <h3>Gebied:</h3>
                 <div id="gebiedskeuze" class="gebiedskeuzetekst"></div>
                 <p id="gebiedskeuzeintro">(Dubbelklik op een plek in de kaart)</p>
@@ -106,6 +120,7 @@
 
     <!--Koppeling naar eigen JavaScript code-->
     <script src="javascript\global.js"></script>
+    <script src="javascript\styles.js"></script>
     <script src="javascript\screenfunctions.js"></script>
     <script src="javascript\map.js"></script>
     <script src="javascript\layers.js"></script>
