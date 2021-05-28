@@ -48,10 +48,6 @@
 
                 <div id="buurtschap" class="tabcontent">
 
-
-
-
-
                     <div class="tab2">
                         <button class="tablinks2" onclick="openTab2(event, 'lagen')" id="defaultOpen2">Lagen</button>
                         <button class="tablinks2" onclick="openTab2(event, 'gegevens')">Gegevens</button>
@@ -73,26 +69,59 @@
                     </div>
 
                     <div id="gegevens" class="tabcontent2">
-
+                        <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
                     </div>
 
                     <div id="adviezen" class="tabcontent2">
-
+                        <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
                     </div>
-
-
-
-
-
 
                 </div>
 
                 <div id="perceel" class="tabcontent">
 
+                    <div class="tab3">
+                        <button class="tablinks3" onclick="openTab3(event, 'lagen3')" id="defaultOpen3">Lagen</button>
+                        <button class="tablinks3" onclick="openTab3(event, 'gegevens3')">Gegevens</button>
+                        <button class="tablinks3" onclick="openTab3(event, 'adviezen3')">Adviezen</button>
+                    </div>
+
+                    <div id="lagen3" class="tabcontent3">
+                        <h3>Gebied:</h3>
+                        <div id="gebiedskeuze" class="gebiedskeuzetekst"></div>
+                        <p id="gebiedskeuzeintro">(Dubbelklik op een plek in de kaart)</p>
+
+                        <div id="datalagen">
+                            <h3>Beschikbare datalagen</h3>
+                            <p>Check de kaartlagen aan of uit, verander de transparantie en versleep de kaartvolgorde.
+                            </p>
+                            <ul id="overlaylayers" class="sortable-list"></ul>
+
+                        </div>
+                    </div>
+
+                    <div id="gegevens3" class="tabcontent3">
+                        <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                    </div>
+
+                    <div id="adviezen3" class="tabcontent3">
+                        <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                    </div>
+
                 </div>
 
                 <div id="forum" class="tabcontent">
-
+                    <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
                 </div>
             </div>
         </aside>
@@ -153,10 +182,25 @@
             evt.currentTarget.className += " active";
         }
 
+        function openTab3(evt, tabName3) {
+            var i, tabcontent3, tablinks3;
+            tabcontent3 = document.getElementsByClassName("tabcontent3");
+            for (i = 0; i < tabcontent3.length; i++) {
+                tabcontent3[i].style.display = "none";
+            }
+            tablinks3 = document.getElementsByClassName("tablinks3");
+            for (i = 0; i < tablinks3.length; i++) {
+                tablinks3[i].className = tablinks3[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName3).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
 
         // Get the element with id="defaultOpen" and click on it
         document.getElementById("defaultOpen").click();
         document.getElementById("defaultOpen2").click();
+        document.getElementById("defaultOpen3").click();
     </script>
 
     <!--Koppeling naar Javascript van OpenLayers-->

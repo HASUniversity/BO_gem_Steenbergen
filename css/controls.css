@@ -75,14 +75,22 @@ input[type="radio"]:checked+.layer-thumbnail {
 
 
 /* Style the tab */
-.tab {
+.tab,
+.tab2,
+.tab3 {
     overflow: hidden;
     border: 1px solid #ccc;
     background-color: #f1f1f1;
 }
 
 /* Style the buttons inside the tab */
-.tab button {
+.tab{
+    margin-bottom: 2px;
+}
+
+.tab button,
+.tab2 button,
+.tab3 button {
     background-color: inherit;
     float: left;
     border: none;
@@ -95,17 +103,27 @@ input[type="radio"]:checked+.layer-thumbnail {
 }
 
 /* Change background color of buttons on hover */
-.tab button:hover {
+.tab button:hover,
+.tab2 button:hover,
+.tab3 button:hover {
     background-color: #ddd;
 }
 
 /* Create an active/current tablink class */
-.tab button.active {
+.tab button.active,
+.tab2 button.active,
+.tab3 button.active {
     background-color: #ccc;
 }
 
 /* Style the tab content */
 .tabcontent {
+    display: none;
+    border-top: none;
+}
+
+.tabcontent2,
+.tabcontent3 {
     display: none;
     padding: 6px 12px;
     border: 1px solid #ccc;
