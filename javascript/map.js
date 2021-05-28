@@ -69,14 +69,21 @@ function initMap() {
 
         markeropeigenlocatie.addFeature(myLocationFeature);
         markeropeigenlocatie.addFeature(accuracyFeature);
-
-        map.setView(new ol.View({
-            center: geolocation.getPosition(),
-            zoom: 14,
-            maxZoom: 16.9
-        }));
     });
 
+
+    //Wanneer er single click op de kaart moet de gebiedsgrenzen ook worden verwijderd.
+    map.on('click', function (evt){
+        // Verwijder de waarneminglaag
+        if (waarneming) {
+            waarneming.clear();
+        }
+
+        // Verwijder de gebiedstitel
+        document.getElementById("gebiedskeuze").innerHTML = "";
+        // Laat de intro tekst ook weer zien
+        $('#gebiedskeuzeintro').show();
+    });
 
 
     //Dubbelklikfunctie

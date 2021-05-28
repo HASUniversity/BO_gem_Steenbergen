@@ -62,7 +62,7 @@ function initLayers() {
         style: new ol.style.Style({
             stroke: new ol.style.Stroke({
                 width: 2,
-                color: 'rgba(0,0,0,0.3)'
+                color: 'rgba(220, 194, 22, 0.5)'
             })
         })
     });
@@ -142,7 +142,7 @@ function initLayers() {
         style: new ol.style.Style({
             stroke: new ol.style.Stroke({
                 width: 4,
-                color: '#3388ff'
+                color: '#1f9a5d'
             })
         })
 

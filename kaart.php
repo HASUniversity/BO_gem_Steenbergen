@@ -21,7 +21,7 @@
 
         <div class="header">
             <div class="header-left">
-                <a href="#default" class="logo">BodemScope</a>
+                <a href="#default" id="logo" class="active">Bio- & BodemScope</a>
             </div>
             <div class="header-right">
                 <a href="#overons">Over ons</a>
@@ -29,65 +29,58 @@
                 <a href="#kennis">Kennis</a>
                 <a href="#inloggen">Inloggen</a>
             </div>
-        </div>    
+        </div>
 
+        <section>
+            <div class="placeholderbasemapswitcher">
+                <div>
+                    <img src="img\basemapswitcher.png">
+                </div>
+                <div>
+                    <img src="img\basemapswitcher.png">
+                </div>
+            </div>
+            <div id="map"></div>
+        </section>
 
         <aside>
             <div class="plaatsingaside">
-                <h3>Gebied:</h3>
-                <div id="gebiedskeuze" class="gebiedskeuzetekst"></div>
-                <p id="gebiedskeuzeintro">(Dubbelklik op een plek in de kaart)</p>
-                <h3>Achtergrondkaart</h3>
-                <ul id="basemaplayers"></ul>
-                <div id="datalagen">
-                    <h3>Beschikbare datalagen</h3>
-                    <p>Check de kaartlagen aan of uit, verander de transparantie en versleep de kaartvolgorde.</p>
-                    <ul id="overlaylayers" class="sortable-list"></ul>
-                    <!-- <input type="range" min="1" max="100" value="50" id="gekozentransparantietest"> -->
-                    <!-- <ul id="sortable" class="sortable-list">
-                        <li class="ui-state-default" id="item_1">
-                            <input type="checkbox" id="idpilotgebied" onclick="layerPilotgebied()">Pilotgebied</input><br>
-                            <input class="transparantie" type="range" min="1" max="100" value="100">
-                        </li>
-                        <li class="ui-state-default" id="item_2">
-                            <input type="checkbox">Perceelsgrenzen</input><br>
-                            <input class="transparantie" type="range" min="1" max="100" value="100">
-                        </li>
-                        <li class="ui-state-default" id="item_3">
-                            <input type="checkbox">Bloemrijke akkerranden</input><br>
-                            <input class="transparantie" type="range" min="1" max="100" value="100">
-                        </li>
-                        <li class="ui-state-default" id="item_4">
-                            <input type="checkbox">Hoogtekaart</input><br>
-                            <input class="transparantie" type="range" min="1" max="100" value="100">
-                        </li>
-                        <li class="ui-state-default" id="item_5">
-                            <input type="checkbox">Maaibestek</input><br>
-                            <input class="transparantie" type="range" min="1" max="100" value="100">
-                        </li>
-                        <li class="ui-state-default" id="item_6">
-                            <input type="checkbox">Grondsoortenkaart</input><br>
-                            <input class="transparantie" type="range" min="1" max="100" value="100">
-                        </li>
-                        <li class="ui-state-default" id="item_7">
-                            <input type="checkbox">Etc.</input><br>
-                            <input class="transparantie" type="range" min="1" max="100" value="100">
-                        </li>
-                    </ul> -->
+                <div class="tab">
+                    <button class="tablinks" onclick="openTab(event, 'buurtschap')"  id="defaultOpen">Buurtschap</button>
+                    <button class="tablinks" onclick="openTab(event, 'perceel')">Perceel</button>
+                    <button class="tablinks" onclick="openTab(event, 'forum')">Forum</button>
+                </div>
+
+                <div id="buurtschap" class="tabcontent">
+                    <h3>Gebied:</h3>
+                    <div id="gebiedskeuze" class="gebiedskeuzetekst"></div>
+                    <p id="gebiedskeuzeintro">(Dubbelklik op een plek in de kaart)</p>
+
+                    <h3>Achtergrondkaart</h3>
+                    <ul id="basemaplayers"></ul>
+
+                    <div id="datalagen">
+                        <h3>Beschikbare datalagen</h3>
+                        <p>Check de kaartlagen aan of uit, verander de transparantie en versleep de kaartvolgorde.</p>
+                        <ul id="overlaylayers" class="sortable-list"></ul>
+
+                    </div>
+                </div>
+
+                <div id="perceel" class="tabcontent">
+
+                </div>
+
+                <div id="forum" class="tabcontent">
+
 
                 </div>
             </div>
         </aside>
-
-        <section>
-            <div id="map"></div>
-        </section>
-
     </main>
 
     <!--Tijdelijk script voor sleepbaar listitem-->
     <script>
-
         $('.sortable-list').sortable({
             connectWith: '.sortable-list',
             update: function (event, ui) {
@@ -100,11 +93,11 @@
 
                 console.log(maplayers);
 
-                $.each(order, function(i, orderlayer){
+                $.each(order, function (i, orderlayer) {
                     console.log(orderlayer);
-                    $.each(maplayers, function(j, overlay){
+                    $.each(maplayers, function (j, overlay) {
                         console.log(ol.util.getUid(overlay));
-                        if (orderlayer == ol.util.getUid(overlay)){
+                        if (orderlayer == ol.util.getUid(overlay)) {
                             overlay.setZIndex(1000 - i);
                         }
                     })
@@ -112,8 +105,34 @@
 
             }
         });
-
     </script>
+
+    <!-- Tijdelijk script voor tabs -->
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+    </script>
+
+
+
+
+
+
 
     <!--Koppeling naar Javascript van OpenLayers-->
     <script src="vendor\ol\ol.js"></script>

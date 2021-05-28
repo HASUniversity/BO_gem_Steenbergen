@@ -5,21 +5,21 @@
 
 aside {
     height: calc(100vh - 80px);
-    width: 400px;
+    width: 500px;
     float: left;
     background-color: #dfe6e9;
 }
 
 .header {
     overflow: hidden;
-    background-color: #b2bec3;
+    background-color: #084e2b;
     margin: 0px;
     height: 80px;
   }
   
   .header a {
     float: left;
-    color: black;
+    color: #f6f6f6;
     text-align: center;
     padding: 12px;
     text-decoration: none;
@@ -33,15 +33,19 @@ aside {
     font-size: 25px;
     font-weight: bold;
   }
+
+  #logo{
+    font-size: 25px;
+    font-weight: bold;
+  }
   
   .header a:hover {
-    background-color: #636e72;
+    background-color: #3F6645;
     color: white;
   }
   
   .header a.active {
-    background-color: dodgerblue;
-    color: white;
+    color: #E6A321;
   }
   
   .header-right {
@@ -75,7 +79,8 @@ aside {
 
 section {
     height: calc(100vh - 80px);
-    width: calc(100% - 400px);
+    width: calc(100% - 500px);
+    position: relative;
     float: right;
 }
 
@@ -91,5 +96,6 @@ ul {
 }
 
 .gebiedskeuzetekst{
-    color: #3388ff ;
+    color: #1f9a5d;
 }
+
