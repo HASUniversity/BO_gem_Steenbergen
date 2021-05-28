@@ -41,22 +41,50 @@
         <aside>
             <div class="plaatsingaside">
                 <div class="tab">
-                    <button class="tablinks" onclick="openTab(event, 'buurtschap')"  id="defaultOpen">Buurtschap</button>
+                    <button class="tablinks" onclick="openTab(event, 'buurtschap')" id="defaultOpen">Buurtschap</button>
                     <button class="tablinks" onclick="openTab(event, 'perceel')">Perceel</button>
                     <button class="tablinks" onclick="openTab(event, 'forum')">Forum</button>
                 </div>
 
                 <div id="buurtschap" class="tabcontent">
-                    <h3>Gebied:</h3>
-                    <div id="gebiedskeuze" class="gebiedskeuzetekst"></div>
-                    <p id="gebiedskeuzeintro">(Dubbelklik op een plek in de kaart)</p>
 
-                    <div id="datalagen">
-                        <h3>Beschikbare datalagen</h3>
-                        <p>Check de kaartlagen aan of uit, verander de transparantie en versleep de kaartvolgorde.</p>
-                        <ul id="overlaylayers" class="sortable-list"></ul>
+
+
+
+
+                    <div class="tab2">
+                        <button class="tablinks2" onclick="openTab2(event, 'lagen')" id="defaultOpen2">Lagen</button>
+                        <button class="tablinks2" onclick="openTab2(event, 'gegevens')">Gegevens</button>
+                        <button class="tablinks2" onclick="openTab2(event, 'adviezen')">Adviezen</button>
+                    </div>
+
+                    <div id="lagen" class="tabcontent2">
+                        <h3>Gebied:</h3>
+                        <div id="gebiedskeuze" class="gebiedskeuzetekst"></div>
+                        <p id="gebiedskeuzeintro">(Dubbelklik op een plek in de kaart)</p>
+
+                        <div id="datalagen">
+                            <h3>Beschikbare datalagen</h3>
+                            <p>Check de kaartlagen aan of uit, verander de transparantie en versleep de kaartvolgorde.
+                            </p>
+                            <ul id="overlaylayers" class="sortable-list"></ul>
+
+                        </div>
+                    </div>
+
+                    <div id="gegevens" class="tabcontent2">
 
                     </div>
+
+                    <div id="adviezen" class="tabcontent2">
+
+                    </div>
+
+
+
+
+
+
                 </div>
 
                 <div id="perceel" class="tabcontent">
@@ -64,7 +92,6 @@
                 </div>
 
                 <div id="forum" class="tabcontent">
-
 
                 </div>
             </div>
@@ -77,9 +104,6 @@
             connectWith: '.sortable-list',
             update: function (event, ui) {
                 var order = $(this).sortable('toArray');
-
-                // console.log(order[0]);
-                // console.log(order[1]);
 
                 let maplayers = map.getLayers().getArray();
 
@@ -115,11 +139,25 @@
             evt.currentTarget.className += " active";
         }
 
-        
+        function openTab2(evt, tabName2) {
+            var i, tabcontent2, tablinks2;
+            tabcontent2 = document.getElementsByClassName("tabcontent2");
+            for (i = 0; i < tabcontent2.length; i++) {
+                tabcontent2[i].style.display = "none";
+            }
+            tablinks2 = document.getElementsByClassName("tablinks2");
+            for (i = 0; i < tablinks2.length; i++) {
+                tablinks2[i].className = tablinks2[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName2).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+
         // Get the element with id="defaultOpen" and click on it
         document.getElementById("defaultOpen").click();
+        document.getElementById("defaultOpen2").click();
     </script>
-
 
     <!--Koppeling naar Javascript van OpenLayers-->
     <script src="vendor\ol\ol.js"></script>
