@@ -4,7 +4,7 @@
     right: 10px;
 }
 
-.custom-zoom-extent{
+.custom-zoom-extent {
     left: unset;
     right: unset;
     right: 10px;
@@ -21,15 +21,67 @@
     background-color: hotpink;
 }
 
+
+
+
+
+.basemapswitch {
+    color: white;
+}
+
+.osm,
+.satelliet {
+    /* positioneert de afbeedling in ruimte van div */
+    background-position: center center;
+    /* zorgt ervoor dat de afbeelding de breedte gebruikt */
+    background-size: cover;
+}
+
+.osm {
+    background-image: url('../img/osm.png');
+}
+
+.satelliet {
+    background-image: url('../img/satelliet.png');
+}
+
+
+input[type="radio"] {
+    display: none;
+}
+
+/*  als de laag is geselecteerd moet de filters uitstaan */
+input[type="radio"]:checked+.layer-thumbnail {
+    -webkit-filter: none;
+    -moz-filter: none;
+    filter: none;
+}
+
+/* properties voor de vorm van het plaatje */
+.layer-thumbnail {
+    position: relative;
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 70px;
+    width: 70px;
+    margin: auto;
+}
+
+.layer-thumbnail:hover {
+    cursor: pointer;
+}
+
+
+
 /* Style the tab */
 .tab {
     overflow: hidden;
     border: 1px solid #ccc;
     background-color: #f1f1f1;
-  }
-  
-  /* Style the buttons inside the tab */
-  .tab button {
+}
+
+/* Style the buttons inside the tab */
+.tab button {
     background-color: inherit;
     float: left;
     border: none;
@@ -39,22 +91,22 @@
     transition: 0.3s;
     font-size: 17px;
     width: 33.3%;
-  }
-  
-  /* Change background color of buttons on hover */
-  .tab button:hover {
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
     background-color: #ddd;
-  }
-  
-  /* Create an active/current tablink class */
-  .tab button.active {
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
     background-color: #ccc;
-  }
-  
-  /* Style the tab content */
-  .tabcontent {
+}
+
+/* Style the tab content */
+.tabcontent {
     display: none;
     padding: 6px 12px;
     border: 1px solid #ccc;
     border-top: none;
-  }
+}

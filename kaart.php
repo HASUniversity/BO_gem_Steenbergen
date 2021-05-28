@@ -33,12 +33,7 @@
 
         <section>
             <div class="placeholderbasemapswitcher">
-                <div>
-                    <img src="img\basemapswitcher.png">
-                </div>
-                <div>
-                    <img src="img\basemapswitcher.png">
-                </div>
+                <ul id="basemaplayers" class="basemapswitch"></ul>
             </div>
             <div id="map"></div>
         </section>
@@ -55,9 +50,6 @@
                     <h3>Gebied:</h3>
                     <div id="gebiedskeuze" class="gebiedskeuzetekst"></div>
                     <p id="gebiedskeuzeintro">(Dubbelklik op een plek in de kaart)</p>
-
-                    <h3>Achtergrondkaart</h3>
-                    <ul id="basemaplayers"></ul>
 
                     <div id="datalagen">
                         <h3>Beschikbare datalagen</h3>
@@ -127,11 +119,6 @@
         // Get the element with id="defaultOpen" and click on it
         document.getElementById("defaultOpen").click();
     </script>
-
-
-
-
-
 
 
     <!--Koppeling naar Javascript van OpenLayers-->

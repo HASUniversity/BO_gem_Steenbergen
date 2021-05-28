@@ -3,9 +3,6 @@ function buildLayerSwitcher() {
     var mapLayers = map.getLayers().getArray();
     // voor elke laag uit de map
 
-    //item ide voor overlay layers telkens 1 omhoog doen
-    let iditem = 1;
-
     $.each(mapLayers, function (i, layer) {
 
         // als de laag een basemap is
@@ -19,9 +16,11 @@ function buildLayerSwitcher() {
                 liTekst += ">";
             }
             //zorg ervoor dat je ook op de tekst kan klikken
-            liTekst += '<label for="' + layer.ol_uid + '">' + layer.values_.title + '</label></li>';
+            liTekst += '<label id="' + layer.values_.title + '" class="layer-thumbnail ' + layer.values_.title + '" for="' + layer.ol_uid + '"></label></li>';
             // voeg de li toe aan de ul
             $('#basemaplayers').append(liTekst);
+
+
 
         } else if (layer.values_.type == "overlay") {
             //als de laag een overlay is
@@ -42,9 +41,6 @@ function buildLayerSwitcher() {
             // voeg de li toe an de ul
             $('#overlaylayers').append(liTekst);
 
-            //iditem + 1
-            iditem = iditem + 1;
-
         }
     });
 
@@ -58,6 +54,21 @@ function buildLayerSwitcher() {
             } else if (layer.values_.type == 'basemap') {
                 layer.setVisible(false);
             }
+        });
+    });
+
+    $(function() {
+
+        $("#osm").hide();
+    
+        $('input[type=radio][id=23]').on('change', function(){
+            $("#satelliet").hide();
+            $("#osm").show();
+        });
+
+        $('input[type=radio][id=25]').on('change', function(){
+            $("#osm").hide();
+            $("#satelliet").show();
         });
     });
 

@@ -7,7 +7,7 @@ function initLayers() {
             url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
             attributions: ['&copy; Esri &mdash; Source: Esri']
         }),
-        title: 'Satteliet',
+        title: 'satelliet',
         type: 'basemap'
     });
     map.addLayer(ESRIsatteliet);
@@ -15,7 +15,7 @@ function initLayers() {
     //  OpenStreetMap achtergrond
     var OSMlayer = new ol.layer.Tile({
         source: new ol.source.OSM(),
-        title: 'OpenStreetMap',
+        title: 'osm',
         type: 'basemap',
         attributions: ['Openstreetmap']
     });
