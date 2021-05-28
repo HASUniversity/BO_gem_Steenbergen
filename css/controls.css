@@ -18,15 +18,16 @@
     z-index: 999;
     width: 75px;
     height: 75px;
-    background-color: hotpink;
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
-
-
-
-
 .basemapswitch {
-    color: white;
+    padding-top: 2.5px;
+    text-align: center;
+}
+
+.basemapswitch:hover {
+    transform: scale(0.9);
 }
 
 .osm,
