@@ -33,10 +33,10 @@ function buildLayerSwitcher() {
                 liTekst += ">";
             }
             //zorg ervoor dat je ook op de tekst kan klikken
-            liTekst += '<label for="' + layer.ol_uid + '">' + layer.values_.title + '</label></br>';
+            liTekst += '<label for="' + layer.ol_uid + '">' + layer.values_.title + '</label></br></li>';
 
             //transparantieslider
-            liTekst += '<input type="range" min="1" max="100" value="50" id="gekozentransparantie" style="width:90%;"></li>';
+            liTekst += '<input type="range" min="1" max="100" value="100" id="sliderOpacity" style="width:90%;"></li>';
 
             // voeg de li toe an de ul
             $('#overlaylayers').append(liTekst);

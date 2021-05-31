@@ -44,6 +44,7 @@ function initMap() {
     // Voeg de knop toe aan de kaart
     map.addControl(zoomToExtentControl);
 
+
     // listen to changes in position
     geolocation.once('change:position', function (evt) {
 

@@ -123,11 +123,35 @@ function initLayers() {
 
 
 
+    // grondsoorten wms
+    var grondsoortenwms = new ol.source.ImageWMS({
+        url: 'http://localhost:8080/geoserver/BOsteenbergen/wms?',
+        params: {
+            'layers': 'grondsoortenkaart',
+        }
+    });
+    var grondsoortenwmslaag = new ol.layer.Image({
+        source: grondsoortenwms,
+        title: 'Grondsoorten',
+        type: 'overlay'
+    });
+    grondsoortenwmslaag.setVisible(false);
+    map.addLayer(grondsoortenwmslaag);
 
 
 
 
 
+
+
+    $("#ahnsliderOpacity").slider({
+        min: 0,
+        max: 100,
+        value: 100,
+        slide: function (event, e) {
+            ahn.setOpacity(e.value / 100);
+        }
+    });
 
     var ahn = new ol.layer.Tile({
         title: "Hoogtekaart",
@@ -152,6 +176,50 @@ function initLayers() {
     });
     ahn.setVisible(false);
     map.addLayer(ahn);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    var settingsndvi = {
+        "url": "https://agrodatacube.wur.nl/api/v2/rest/fields/9411844/ndvi?output_epsg=4326&fromdate=20210101&todate=20220101&page_size=366&page_offset=0",
+        "method": "GET",
+        "timeout": 0,
+
+        "headers": {
+          "Accept": "application/json",
+          "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3N1ZWR0byI6Im1lbm5vdmFuZGVyc3BhbmtAZ21haWwuY29tIiwicmVzb3VyY2UiOlsiKiJdLCJpYXQiOjE2MjA4MjkwNjh9.CqAr04BXeDsB5HQpZWYZ9MyIugzLKTs8m-Nfuo-LFSA"
+        },
+      };
+      
+      $.ajax(settingsndvi).done(function (data) {
+        console.log(data);
+
+        ndvisource.addFeatures(new ol.format.GeoJSON().readFeatures(data, {
+            dataProjection: 'EPSG:4326',
+            featureProjection: 'EPSG:3857'
+        }));
+      });
+
+      ndvisource = new ol.source.Vector();
+      var ndvi = new ol.layer.Vector({
+          source: ndvisource,
+          title: 'NDVI index',
+          type: 'overlay'
+      });
+      ndvi.setVisible(false);
+      map.addLayer(ndvi);
 
 
 
@@ -192,33 +260,54 @@ function initLayers() {
 
 
 
-    var settingsndvi = {
-        "url": "https://agrodatacube.wur.nl/api/v2/rest/fields/9411844/ndvi?output_epsg=4326&fromdate=20210101&todate=20220101&page_size=366&page_offset=0",
-        "method": "GET",
-        "timeout": 0,
 
-        "headers": {
-          "Accept": "application/json",
-          "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3N1ZWR0byI6Im1lbm5vdmFuZGVyc3BhbmtAZ21haWwuY29tIiwicmVzb3VyY2UiOlsiKiJdLCJpYXQiOjE2MjA4MjkwNjh9.CqAr04BXeDsB5HQpZWYZ9MyIugzLKTs8m-Nfuo-LFSA"
-        },
-      };
-      
-      $.ajax(settingsndvi).done(function (data) {
-        console.log(data);
 
-        ndvisource.addFeatures(new ol.format.GeoJSON().readFeatures(data, {
-            dataProjection: 'EPSG:4326',
-            featureProjection: 'EPSG:3857'
-        }));
-      });
 
-      ndvisource = new ol.source.Vector();
-      var ndvi = new ol.layer.Vector({
-          source: ndvisource,
-          title: 'NDVI index',
-          type: 'overlay'
-      });
-      map.addLayer(ndvi);
+
+
+
+    //   let grondsoortenurl = {
+    //     'url': 'http://localhost:8080/geoserver/BOsteenbergen/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=BOsteenbergen%3Agrondsoortenkaart&outputFormat=application%2Fjson'
+    // };
+
+    // //ajax call voor grondsoorten
+    // $.ajax({
+    //         url: 'php/geoproxycurl.php',
+    //         method: 'post',
+    //         dataType: 'json',
+    //         data: grondsoortenurl
+    //     }).done(function (data) {
+
+    //         grondsoortensource.addFeatures(new ol.format.GeoJSON().readFeatures(data, {
+    //             dataProjection: 'EPSG:4326',
+    //             featureProjection: 'EPSG:3857'
+    //         }));
+    //     })
+    //     .fail(function (message) {
+    //         console.log(message)
+    //     });
+
+
+    // //grondsoortenwf
+    // grondsoortensource = new ol.source.Vector();
+    // var grondsoortenkaart = new ol.layer.Vector({
+    //     source: grondsoortensource,
+    //     title: 'Grondsoorten',
+    //     type: 'overlay',
+    //     // style: new ol.style.Style({
+    //     //     stroke: new ol.style.Stroke({
+    //     //         width: 3,
+    //     //         color: 'rgba(299,0,0,1.0)'
+    //     //     })
+    //     // })
+    // });
+    // grondsoortenkaart.setVisible(false);
+    // map.addLayer(grondsoortenkaart);
+
+
+
+
+
 
 
 

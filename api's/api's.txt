@@ -9,6 +9,7 @@ Token:
 eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3N1ZWR0byI6Im1lbm5vdmFuZGVyc3BhbmtAZ21haWwuY29tIiwicmVzb3VyY2UiOlsiKiJdLCJpYXQiOjE2MjA4MjkwNjh9.CqAr04BXeDsB5HQpZWYZ9MyIugzLKTs8m-Nfuo-LFSA
 
 
+https://agrodatacube.wur.nl/api/v2/rest/fields?geometry=POLYGON%20((4.2%2052,%204.2%2053,%204.3%2053,%204.3%2052,%204.2%2052))/ndvi?output_epsg=4326&page_size=25&page_offset=0&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3N1ZWR0byI6Im1lbm5vdmFuZGVyc3BhbmtAZ21haWwuY29tIiwicmVzb3VyY2UiOlsiKiJdLCJpYXQiOjE2MjA4MjkwNjh9.CqAr04BXeDsB5HQpZWYZ9MyIugzLKTs8m-Nfuo-LFSA
 
 
 Waarneming.nl

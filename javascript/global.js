@@ -8,3 +8,5 @@ var perceelwfs;
 var newwms
 var pilotgebiedsource;
 var pilotgebied;
+var ahn;
+var grondsoortenwmslaag;
