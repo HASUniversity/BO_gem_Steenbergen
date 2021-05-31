@@ -125,12 +125,53 @@ function initLayers() {
 
 
 
-    
+
+
+
+
+    var ahn = new ol.layer.Tile({
+        title: "Hoogtekaart",
+        type: "overlay",
+        source: new ol.source.TileWMS({
+            url: "https://geodata.nationaalgeoregister.nl/ahn2/wms?",
+            params: {
+                "SERVICE":"WMS",
+                "REQUEST":"GetMap",
+                "FORMAT":"image/png",
+                "WIDTH":"400",
+                "HEIGHT":"500",
+                "TILED":"256x256",
+                "BBOX":"13014,306243,286599,623492",
+                "LAYERS": "ahn2_5m",
+                "SRS": "EPSG:3857",
+                "CRS": "EPSG:28992",
+                "VERSION":"1.3.0",
+                "STYLES": "",
+            }
+        })
+    });
+    ahn.setVisible(false);
+    map.addLayer(ahn);
 
 
 
 
 
+
+
+
+
+
+
+
+    // Huidige locatie stip
+    markeropeigenlocatie = new ol.source.Vector();
+    var eigenlocatielaag = new ol.layer.Vector({
+        source: markeropeigenlocatie,
+        title: 'Huidige locatie',
+        // type: 'overlay'
+    });
+    map.addLayer(eigenlocatielaag);
 
     // Vector laag voor gebiedsindeling waarneming.nl
     waarneming = new ol.source.Vector();
@@ -151,16 +192,33 @@ function initLayers() {
 
 
 
+    var settingsndvi = {
+        "url": "https://agrodatacube.wur.nl/api/v2/rest/fields/9411844/ndvi?output_epsg=4326&fromdate=20210101&todate=20220101&page_size=366&page_offset=0",
+        "method": "GET",
+        "timeout": 0,
 
-    // Huidige locatie stip
-    markeropeigenlocatie = new ol.source.Vector();
-    var eigenlocatielaag = new ol.layer.Vector({
-        source: markeropeigenlocatie,
-        title: 'Huidige locatie',
-        // type: 'overlay'
-    });
-    map.addLayer(eigenlocatielaag);
+        "headers": {
+          "Accept": "application/json",
+          "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3N1ZWR0byI6Im1lbm5vdmFuZGVyc3BhbmtAZ21haWwuY29tIiwicmVzb3VyY2UiOlsiKiJdLCJpYXQiOjE2MjA4MjkwNjh9.CqAr04BXeDsB5HQpZWYZ9MyIugzLKTs8m-Nfuo-LFSA"
+        },
+      };
+      
+      $.ajax(settingsndvi).done(function (data) {
+        console.log(data);
 
+        ndvisource.addFeatures(new ol.format.GeoJSON().readFeatures(data, {
+            dataProjection: 'EPSG:4326',
+            featureProjection: 'EPSG:3857'
+        }));
+      });
+
+      ndvisource = new ol.source.Vector();
+      var ndvi = new ol.layer.Vector({
+          source: ndvisource,
+          title: 'NDVI index',
+          type: 'overlay'
+      });
+      map.addLayer(ndvi);
 
 
 

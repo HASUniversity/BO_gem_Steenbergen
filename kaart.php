@@ -21,7 +21,11 @@
 
         <div class="header">
             <div class="header-left">
-                <a href="#default" id="logo" class="active">Bio- & BodemScope</a>
+                <span>
+                    <img src="img\logo_biobodemscope.png" style="height:70px;">
+                    <a href="#default" id="logo" class="active">BioBodemScope</a>
+                </span>
+                
             </div>
             <div class="header-right">
                 <a href="#overons">Over ons</a>
