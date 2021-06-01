@@ -4,7 +4,4 @@ $(document).ready(function(){
     initLayers();
     buildLayerSwitcher();
 
-    // $("#datalagen").toggle();
-
-
 });

@@ -55,7 +55,7 @@ function initLayers() {
 
     //Perceelsgrenzen WFS
     perceelwfssource = new ol.source.Vector();
-    var perceelwfs = new ol.layer.Vector({
+    Perceelsgrenzen = new ol.layer.Vector({
         source: perceelwfssource,
         title: 'Perceelsgrenzen',
         type: 'overlay',
@@ -66,8 +66,8 @@ function initLayers() {
             })
         })
     });
-    perceelwfs.setVisible(false);
-    map.addLayer(perceelwfs);
+    Perceelsgrenzen.setVisible(false);
+    map.addLayer(Perceelsgrenzen);
 
 
 
@@ -100,7 +100,7 @@ function initLayers() {
 
     //Pilotgebiedsgrenzen
     pilotgebiedsource = new ol.source.Vector();
-    var pilotgebied = new ol.layer.Vector({
+    Pilotgebied = new ol.layer.Vector({
         source: pilotgebiedsource,
         title: 'Pilotgebied',
         type: 'overlay',
@@ -111,8 +111,8 @@ function initLayers() {
             })
         })
     });
-    pilotgebied.setVisible(false);
-    map.addLayer(pilotgebied);
+    Pilotgebied.setVisible(false);
+    map.addLayer(Pilotgebied);
 
 
 
@@ -130,13 +130,13 @@ function initLayers() {
             'layers': 'grondsoortenkaart',
         }
     });
-    var grondsoortenwmslaag = new ol.layer.Image({
+    Grondsoorten = new ol.layer.Image({
         source: grondsoortenwms,
         title: 'Grondsoorten',
         type: 'overlay'
     });
-    grondsoortenwmslaag.setVisible(false);
-    map.addLayer(grondsoortenwmslaag);
+    Grondsoorten.setVisible(false);
+    map.addLayer(Grondsoorten);
 
 
 
@@ -144,16 +144,23 @@ function initLayers() {
 
 
 
-    $("#ahnsliderOpacity").slider({
-        min: 0,
-        max: 100,
-        value: 100,
-        slide: function (event, e) {
-            ahn.setOpacity(e.value / 100);
-        }
-    });
+    // $("#ahnsliderOpacity").slider({
+    //     min: 0,
+    //     max: 100,
+    //     value: 100,
+    //     slide: function (event, e) {
+    //         ahn.setOpacity(e.value / 100);
+    //     }
+    // });
 
-    var ahn = new ol.layer.Tile({
+    // var opacityahn = document.getElementById("HoogtekaartsliderOpacity");
+    // console.log(opacityahn);
+
+
+
+
+    Hoogtekaart = new ol.layer.Tile({
+        opacity: 1.0,
         title: "Hoogtekaart",
         type: "overlay",
         source: new ol.source.TileWMS({
@@ -174,13 +181,8 @@ function initLayers() {
             }
         })
     });
-    ahn.setVisible(false);
-    map.addLayer(ahn);
-
-
-
-
-
+    Hoogtekaart.setVisible(false);
+    map.addLayer(Hoogtekaart);
 
 
 
@@ -213,13 +215,13 @@ function initLayers() {
       });
 
       ndvisource = new ol.source.Vector();
-      var ndvi = new ol.layer.Vector({
+      Ndvi = new ol.layer.Vector({
           source: ndvisource,
-          title: 'NDVI index',
+          title: 'NDVI',
           type: 'overlay'
       });
-      ndvi.setVisible(false);
-      map.addLayer(ndvi);
+      Ndvi.setVisible(false);
+      map.addLayer(Ndvi);
 
 
 

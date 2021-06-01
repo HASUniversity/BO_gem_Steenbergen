@@ -7,6 +7,8 @@ var perceelwms;
 var perceelwfs;
 var newwms
 var pilotgebiedsource;
-var pilotgebied;
-var ahn;
-var grondsoortenwmslaag;
+var Pilotgebied;
+var Hoogtekaart;
+var Perceelsgrenzen;
+var Grondsoorten;
+var Ndvi;

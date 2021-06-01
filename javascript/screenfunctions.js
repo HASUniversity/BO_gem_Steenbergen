@@ -33,16 +33,38 @@ function buildLayerSwitcher() {
                 liTekst += ">";
             }
             //zorg ervoor dat je ook op de tekst kan klikken
-            liTekst += '<label for="' + layer.ol_uid + '">' + layer.values_.title + '</label></br></li>';
+            liTekst += '<label for="' + layer.ol_uid + '">' + layer.values_.title + '</label></br>';
 
             //transparantieslider
-            liTekst += '<input type="range" min="1" max="100" value="100" id="sliderOpacity" style="width:90%;"></li>';
+            liTekst += '<input type="range" min="0" max="1" value="1.0" step="0.05" id="' + layer.values_.title + 'sliderOpacity" style="width:90%"></li>';
+
+            $("#HoogtekaartsliderOpacity").on('input', function() {
+                Hoogtekaart.setOpacity(parseFloat($(this).val()));
+            });
+            $("#PilotgebiedsliderOpacity").on('input', function() {
+                Pilotgebied.setOpacity(parseFloat($(this).val()));
+            });
+            $("#PerceelsgrenzensliderOpacity").on('input', function() {
+                Perceelsgrenzen.setOpacity(parseFloat($(this).val()));
+            });
+            $("#GrondsoortensliderOpacity").on('input', function() {
+                Grondsoorten.setOpacity(parseFloat($(this).val()));
+            });
+            $("#NdvisliderOpacity").on('input', function() {
+                Hoogtekaart.setOpacity(parseFloat($(this).val()));
+            });
+            // $("nieuwsliderOpacity").on('input', function() {
+            //     Hoogtekaart.setOpacity(parseFloat($(this).val()));
+            // });
+            
 
             // voeg de li toe an de ul
-            $('#overlaylayers').append(liTekst);
+            $('#overlaylayers').prepend(liTekst);
 
         }
     });
+
+
 
     // werkende layer switchers
     // Wanneer het een radio button is
