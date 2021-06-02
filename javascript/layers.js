@@ -27,6 +27,12 @@ function initLayers() {
 
 
 
+
+
+
+
+
+
     let postDatabrp = {
         'url': 'https://geodata.nationaalgeoregister.nl/brpgewaspercelen/wfs?service=wfs&version=2.0.0&request=GetFeature&typeName=brpgewaspercelen:brpgewaspercelen&outputFormat=json&srsname=EPSG:4326&bbox=4.29136,51.58539,4.45238,51.65942,EPSG:4326'
     };
@@ -72,12 +78,8 @@ function initLayers() {
 
 
 
-
-
-
-
     let postDatapilot = {
-        'url': 'http://localhost:8080/geoserver/BOsteenbergen/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=BOsteenbergen%3Apilotgebiedtwee&maxFeatures=50&outputFormat=application%2Fjson'
+        'url': 'https://bogemeentesteenbergen.azurewebsites.net/data/pilotgebied.json'
     };
 
     //ajax call voor pilotgebied
@@ -140,23 +142,14 @@ function initLayers() {
 
 
 
+    // https://ahn.arcgisonline.nl/arcgis/rest/services/AHNviewer/AHN3_r/ImageServer/exportImage?f=image&bandIds=&renderingRule=%7B%22rasterFunction%22%3A%22AHN2%20-%20Color%20Ramp%20D%22%7D&bbox=80189.39382829366%2C401486.8487645384%2C83383.45021640643%2C404436.42966370017&imageSR=28992&bboxSR=28992&size=1006%2C929
 
 
 
-
-    // $("#ahnsliderOpacity").slider({
-    //     min: 0,
-    //     max: 100,
-    //     value: 100,
-    //     slide: function (event, e) {
-    //         ahn.setOpacity(e.value / 100);
-    //     }
-    // });
-
-    // var opacityahn = document.getElementById("HoogtekaartsliderOpacity");
-    // console.log(opacityahn);
-
-
+    // let postAhn = {
+    //     'url': 'https://ahn.arcgisonline.nl/arcgis/rest/services/AHNviewer/AHN3_r/ImageServer/exportImage?f=image&bandIds=&renderingRule=%7B%22rasterFunction%22%3A%22AHN2%20-%20Color%20Ramp%20D%22%7D&bbox=' + bboxya + '%2C' + bboxxa + '%2C' + bboxyb + '%2C' + bboxxb + '&imageSR=28992&bboxSR=28992&size=1006%2C929'
+    // };
+    // console.log(postAhn);
 
 
     Hoogtekaart = new ol.layer.Tile({
@@ -183,7 +176,6 @@ function initLayers() {
     });
     Hoogtekaart.setVisible(false);
     map.addLayer(Hoogtekaart);
-
 
 
 
@@ -229,16 +221,12 @@ function initLayers() {
 
 
 
-
-
-
-
-
     // Huidige locatie stip
     markeropeigenlocatie = new ol.source.Vector();
     var eigenlocatielaag = new ol.layer.Vector({
         source: markeropeigenlocatie,
         title: 'Huidige locatie',
+        ZIndex: 9999,
         // type: 'overlay'
     });
     map.addLayer(eigenlocatielaag);

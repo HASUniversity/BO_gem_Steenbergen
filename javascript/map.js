@@ -17,6 +17,19 @@ function initMap() {
         })
     });
 
+    // De kaart laadt met onderstaande functie alleen de data in die binnen de boudingboxes valt
+    map.on('moveend', function (evt) {
+
+        // Volledige boundingbox verkrijgen van de kaart
+        let bbox = map.getView().calculateExtent(map.getSize());
+        console.log(bbox);
+
+        let bbox28992 = ol.proj.transformExtent(bbox, 'EPSG:3857', 'EPSG:28992')
+        console.log(bbox28992);
+
+    });
+
+
     var geolocation = new ol.Geolocation({
         projection: map.getView().getProjection(),
         tracking: true,

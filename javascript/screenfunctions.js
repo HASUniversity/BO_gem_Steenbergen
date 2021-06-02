@@ -51,10 +51,10 @@ function buildLayerSwitcher() {
                 Grondsoorten.setOpacity(parseFloat($(this).val()));
             });
             $("#NdvisliderOpacity").on('input', function() {
-                Hoogtekaart.setOpacity(parseFloat($(this).val()));
+                Ndvi.setOpacity(parseFloat($(this).val()));
             });
-            // $("nieuwsliderOpacity").on('input', function() {
-            //     Hoogtekaart.setOpacity(parseFloat($(this).val()));
+            // $("newliderOpacity").on('input', function() {
+            //     newlayer.setOpacity(parseFloat($(this).val()));
             // });
             
 

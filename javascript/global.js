@@ -12,3 +12,7 @@ var Hoogtekaart;
 var Perceelsgrenzen;
 var Grondsoorten;
 var Ndvi;
+var bboxxa;
+var bboxya;
+var bboxxb;
+var bboxyb;
