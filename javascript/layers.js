@@ -127,7 +127,7 @@ function initLayers() {
 
     // grondsoorten wms
     var grondsoortenwms = new ol.source.ImageWMS({
-        url: 'http://localhost:8080/geoserver/BOsteenbergen/wms?',
+        url: 'https://gmd.has.nl/geoserver/engineer_2021_540239739/wms?',
         params: {
             'layers': 'grondsoortenkaart',
         }
@@ -142,15 +142,19 @@ function initLayers() {
 
 
 
-    // https://ahn.arcgisonline.nl/arcgis/rest/services/AHNviewer/AHN3_r/ImageServer/exportImage?f=image&bandIds=&renderingRule=%7B%22rasterFunction%22%3A%22AHN2%20-%20Color%20Ramp%20D%22%7D&bbox=80189.39382829366%2C401486.8487645384%2C83383.45021640643%2C404436.42966370017&imageSR=28992&bboxSR=28992&size=1006%2C929
+    // 'https://ahn.arcgisonline.nl/arcgis/rest/services/AHNviewer/AHN3_r/ImageServer/exportImage?f=image&bandIds=&renderingRule=%7B%22rasterFunction%22%3A%22AHN2%20-%20Color%20Ramp%20D%22%7D&bbox=78107.5891942088%2C398076.2848261798%2C90263.01074467189%2C408786.37196994445&imageSR=28992&bboxSR=28992&size=1006%2C929'
 
-
+    // 78107.5891942088, 398076.2848261798, 90263.01074467189, 408786.37196994445
 
     // let postAhn = {
     //     'url': 'https://ahn.arcgisonline.nl/arcgis/rest/services/AHNviewer/AHN3_r/ImageServer/exportImage?f=image&bandIds=&renderingRule=%7B%22rasterFunction%22%3A%22AHN2%20-%20Color%20Ramp%20D%22%7D&bbox=' + bboxya + '%2C' + bboxxa + '%2C' + bboxyb + '%2C' + bboxxb + '&imageSR=28992&bboxSR=28992&size=1006%2C929'
     // };
     // console.log(postAhn);
 
+
+    // https://geodata.nationaalgeoregister.nl/ahn2/wms?
+
+    // https://ahn.arcgisonline.nl/arcgis/rest/services/AHNviewer/AHN3_r/ImageServer/exportImage?f=image&bandIds=&renderingRule=%7B%22rasterFunction%22%3A%22AHN2%20-%20Color%20Ramp%20D%22%7D&bbox=78107.5891942088%2C398076.2848261798%2C90263.01074467189%2C408786.37196994445&imageSR=28992&bboxSR=28992&tiled=256x256
 
     Hoogtekaart = new ol.layer.Tile({
         opacity: 1.0,
@@ -186,34 +190,34 @@ function initLayers() {
 
 
 
-    var settingsndvi = {
-        "url": "https://agrodatacube.wur.nl/api/v2/rest/fields/9411844/ndvi?output_epsg=4326&fromdate=20210101&todate=20220101&page_size=366&page_offset=0",
-        "method": "GET",
-        "timeout": 0,
+    // var settingsndvi = {
+    //     "url": "https://agrodatacube.wur.nl/api/v2/rest/fields/9411844/ndvi?output_epsg=4326&fromdate=20210101&todate=20220101&page_size=366&page_offset=0",
+    //     "method": "GET",
+    //     "timeout": 0,
 
-        "headers": {
-          "Accept": "application/json",
-          "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3N1ZWR0byI6Im1lbm5vdmFuZGVyc3BhbmtAZ21haWwuY29tIiwicmVzb3VyY2UiOlsiKiJdLCJpYXQiOjE2MjA4MjkwNjh9.CqAr04BXeDsB5HQpZWYZ9MyIugzLKTs8m-Nfuo-LFSA"
-        },
-      };
+    //     "headers": {
+    //       "Accept": "application/json",
+    //       "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3N1ZWR0byI6Im1lbm5vdmFuZGVyc3BhbmtAZ21haWwuY29tIiwicmVzb3VyY2UiOlsiKiJdLCJpYXQiOjE2MjA4MjkwNjh9.CqAr04BXeDsB5HQpZWYZ9MyIugzLKTs8m-Nfuo-LFSA"
+    //     },
+    //   };
       
-      $.ajax(settingsndvi).done(function (data) {
-        console.log(data);
+    //   $.ajax(settingsndvi).done(function (data) {
+    //     console.log(data);
 
-        ndvisource.addFeatures(new ol.format.GeoJSON().readFeatures(data, {
-            dataProjection: 'EPSG:4326',
-            featureProjection: 'EPSG:3857'
-        }));
-      });
+    //     ndvisource.addFeatures(new ol.format.GeoJSON().readFeatures(data, {
+    //         dataProjection: 'EPSG:4326',
+    //         featureProjection: 'EPSG:3857'
+    //     }));
+    //   });
 
-      ndvisource = new ol.source.Vector();
-      Ndvi = new ol.layer.Vector({
-          source: ndvisource,
-          title: 'NDVI',
-          type: 'overlay'
-      });
-      Ndvi.setVisible(false);
-      map.addLayer(Ndvi);
+    //   ndvisource = new ol.source.Vector();
+    //   Ndvi = new ol.layer.Vector({
+    //       source: ndvisource,
+    //       title: 'NDVI',
+    //       type: 'overlay'
+    //   });
+    //   Ndvi.setVisible(false);
+    //   map.addLayer(Ndvi);
 
 
 

@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
     <script src="//code.jquery.com/jquery-1.12.4.js"></script>
     <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.6.2/proj4.min.js"></script>
 </head>
 
 <body>
@@ -45,9 +46,9 @@
         <aside>
             <div class="plaatsingaside">
                 <div class="tab">
-                    <button class="tablinks" onclick="openTab(event, 'buurtschap')" id="defaultOpen">Buurtschap</button>
-                    <button class="tablinks" onclick="openTab(event, 'perceel')">Perceel</button>
-                    <button class="tablinks" onclick="openTab(event, 'forum')">Forum</button>
+                    <button class="tablinks" onclick="openTab(event, 'buurtschap')" id="defaultOpen"><img src="img/viewermodus_buurtschap.png" style="width:100%"></button>
+                    <button class="tablinks" onclick="openTab(event, 'perceel')"><img src="img/viewermodus_perceel.png" style="width:100%"></button>
+                    <button class="tablinks" onclick="openTab(event, 'forum')"><img src="img/viewermodus_forum.png" style="width:100%"></button>
                 </div>
 
                 <div id="buurtschap" class="tabcontent">
@@ -69,34 +70,35 @@
                             </p>
                             <ul id="overlaylayers" class="sortable-list"></ul><br>
                         </div>
-
-                        <div id="gegevens" class="tabcontent2">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut
-                                labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                ullamco
-                                laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
-                                in
-                                voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                                cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                            </p>
-                        </div>
-
-                        <div id="adviezen" class="tabcontent2">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut
-                                labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                ullamco
-                                laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
-                                in
-                                voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                                cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                            </p>
-                        </div>
-
                     </div>
+
+                    <div id="gegevens" class="tabcontent2">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                            incididunt ut
+                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                            ullamco
+                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
+                            in
+                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                            cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                    </div>
+
+                    <div id="adviezen" class="tabcontent2">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                            incididunt ut
+                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                            ullamco
+                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
+                            in
+                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                            cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                    </div>
+
+
 
                     <div id="perceel" class="tabcontent">
 
