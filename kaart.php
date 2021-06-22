@@ -29,10 +29,10 @@
 
             </div>
             <div class="header-right">
-                <a href="#overons">Over ons</a>
-                <a href="#intro">Intro</a>
-                <a href="#kennis">Kennis</a>
-                <a href="#inloggen">Inloggen</a>
+                <a id="nietwerkend" href="#overons">Over ons<span id="nietwerkendtext">Deze functie werkt nog niet</span></a>
+                <a id="nietwerkend" href="#intro">Intro<span id="nietwerkendtext">Deze functie werkt nog niet</span></a>
+                <a id="nietwerkend" href="#kennis">Kennis<span id="nietwerkendtext">Deze functie werkt nog niet</span></a>
+                <a id="nietwerkend" href="#inloggen">Inloggen<span id="nietwerkendtext">Deze functie werkt nog niet</span></a>
             </div>
         </div>
 
@@ -47,16 +47,16 @@
             <div class="plaatsingaside">
                 <div class="tab">
                     <button class="tablinks" onclick="openTab(event, 'buurtschap')" id="defaultOpen"><img src="img/viewermodus_buurtschap.png" style="width:100%"></button>
-                    <button class="tablinks" onclick="openTab(event, 'perceel')"><img src="img/viewermodus_perceel.png" style="width:100%"></button>
-                    <button class="tablinks" onclick="openTab(event, 'forum')"><img src="img/viewermodus_forum.png" style="width:100%"></button>
+                    <button id="nietwerkend" class="tablinks" onclick="openTab(event, 'perceel')"><img src="img/viewermodus_perceel.png" style="width:100%"><span id="nietwerkendtext">Deze functie werkt nog niet</span></button>
+                    <button id="nietwerkend" class="tablinks" onclick="openTab(event, 'forum')"><img src="img/viewermodus_forum.png" style="width:100%"><span id="nietwerkendtext">Deze functie werkt nog niet</span></button>
                 </div>
 
                 <div id="buurtschap" class="tabcontent">
 
                     <div class="tab2">
                         <button class="tablinks2" onclick="openTab2(event, 'lagen')" id="defaultOpen2">Lagen</button>
-                        <button class="tablinks2" onclick="openTab2(event, 'gegevens')">Gegevens</button>
-                        <button class="tablinks2" onclick="openTab2(event, 'adviezen')">Adviezen</button>
+                        <button id="nietwerkend" class="tablinks2" onclick="openTab2(event, 'gegevens')">Gegevens<span id="nietwerkendtext">Deze functie werkt nog niet</span></button>
+                        <button id="nietwerkend" class="tablinks2" onclick="openTab2(event, 'adviezen')">Adviezen<span id="nietwerkendtext">Deze functie werkt nog niet</span></button>
                     </div>
 
                     <div id="lagen" class="tabcontent2">

@@ -78,6 +78,7 @@ function initLayers() {
 
 
 
+
     let postDatapilot = {
         'url': 'https://bogemeentesteenbergen.azurewebsites.net/data/pilotgebied.json'
     };
@@ -157,7 +158,7 @@ function initLayers() {
     // https://ahn.arcgisonline.nl/arcgis/rest/services/AHNviewer/AHN3_r/ImageServer/exportImage?f=image&bandIds=&renderingRule=%7B%22rasterFunction%22%3A%22AHN2%20-%20Color%20Ramp%20D%22%7D&bbox=78107.5891942088%2C398076.2848261798%2C90263.01074467189%2C408786.37196994445&imageSR=28992&bboxSR=28992&tiled=256x256
 
     Hoogtekaart = new ol.layer.Tile({
-        opacity: 1.0,
+        // opacity: 1.0,
         title: "Hoogtekaart",
         type: "overlay",
         source: new ol.source.TileWMS({
